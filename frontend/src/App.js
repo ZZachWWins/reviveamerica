@@ -26,7 +26,7 @@ function App() {
 
     const resizeCanvas = () => {
       if (canvas) {
-        canvas.width = window.innerWidth;
+        canvas.width = 50; // Fixed width to match starry-background
         canvas.height = window.innerHeight;
       }
     };
@@ -34,9 +34,9 @@ function App() {
     window.addEventListener('resize', resizeCanvas);
 
     const stars = Array.from({ length: 50 }, () => ({
-      x: Math.random() * (canvas?.width || window.innerWidth),
+      x: Math.random() * 50,
       y: Math.random() * (canvas?.height || window.innerHeight),
-      radius: Math.random() * 1.5 + 0.5,
+      radius: Math.random() * 2 + 1,
       alpha: Math.random() * 0.5 + 0.5,
     }));
 
@@ -123,7 +123,7 @@ function App() {
   };
 
   const handleDonate = () => {
-    window.open('https://reviveamerica.org/donate', '_blank'); // Placeholder URL
+    window.open('https://reviveamerica.info/donate', '_blank'); // Placeholder URL
   };
 
   return (
@@ -133,7 +133,7 @@ function App() {
 
       <header className="header">
         <h1 ref={titleRef} className="title">Revive America</h1>
-        <p className="subtitle">A Sovereign People’s Journey</p>
+        <p className="subtitle">A Sovereign People’s Journey to Reclaim Liberty</p>
         <div className="auth-section">
           {user ? (
             <>
@@ -149,7 +149,7 @@ function App() {
       <section className="landing-section">
         <h2 className="landing-title">The Call to Revive</h2>
         <p className="landing-text">
-          Join us to restore the America our founders envisioned—a union of sovereign states and tribes, where liberty flows from individuals to communities, not from distant elites.
+          Dear Fellow American, I am a child of this land, raised where neighbors were family, and we lived the promise of “Life, Liberty, and the pursuit of Happiness” (Declaration of Independence, 1776). Today, that dream fades under an Elite Ruling Class—$4.7 trillion in taxes (IRS 2023), $68 billion seized (IJ 2024), 10.5 million arrests (FBI 2022)—but we can restore it. Join us to revive the founders’ vision: a union of sovereign states and tribes, where liberty flows from individuals to communities, not distant elites.
         </p>
         <button className="cta-btn" onClick={() => setShowMission(true)}>Our Mission</button>
         <button className="cta-btn" onClick={() => setShowPlan(true)}>Our Plan</button>
@@ -159,21 +159,21 @@ function App() {
       <section className="why-i-am-section" ref={whyRef}>
         <h2 className="section-title">Why We Fight</h2>
         <p className="section-text">
-          Once, we thrived in tight-knit communities—farming, ranching, and standing together. Today, an Elite Ruling Class siphons $4.7 trillion in taxes (IRS 2023), seizes $68 billion through forfeiture (IJ 2024), and jails 10.5 million (FBI 2022), dimming that dream. From the Whiskey Rebellion (1794) to the Cherokee’s stand (1832), states and tribes have resisted. We fight to revive their legacy of sovereignty.
+          Once, we thrived in tight-knit communities—farming, ranching, hunting together—guided by state and tribal sovereignty, not elite dictates. Now, my hometown and countless others struggle, dimmed by a system that hoards $44 trillion for the 1% (Federal Reserve 2023), spends $14.4 billion on elections for millionaires (OpenSecrets 2023), and enforces control through 10.5 million arrests (Vera 2022). History screams resistance: the Whiskey Rebellion (1794) crushed for opposing taxes, Virginia and Kentucky’s Resolutions (1798) defying federal overreach, South Carolina’s Nullification (1832) against tariffs, and the Cherokee’s stand in Worcester v. Georgia (1832) betrayed by the Trail of Tears. We fight to revive their legacy—because 94% of us see this unfairness (Gallup 2024) and know it’s not the America our founders built.
         </p>
       </section>
 
       <section className="vision-section" ref={visionRef}>
         <h2 className="section-title">Our Vision</h2>
         <p className="section-text">
-          By 2040, 50+ states and 574 tribes will nullify federal overreach, sheriffs and tribal leaders will defend our rights, and grand juries will hold elites accountable. We’ll shift to state and tribal economic control, win legal victories, and amend the Constitution to enshrine sovereignty—echoing 1798, 1832, and beyond.
+          By 2040, we’ll rebuild a union of sovereign states and tribes: 50+ states and 574 tribes nullifying federal overreach on taxes ($4.7 trillion, IRS 2023), health ($1.207 trillion Pharma, Statista 2025), and property ($68 billion forfeiture, IJ 2024). Over 60 sheriffs and tribal leaders will train 30,000-60,000 defenders, echoing the Whiskey Rebellion farmers and Texas border guards (2023-2025). Citizen grand juries (2,500+) will judge elite abuses, as in 1798 and 1854. Economic freedom will rise with 35+ states and tribes shifting to sales taxes or gaming compacts, like nine no-income-tax states and the Seminole ($2.5 billion, 2023). Legal victories (40-60 lawsuits, $500M+) and a Constitutional amendment by 38 states and tribes will banish elite influence, fulfilling the Anti-Federalists’ 1787 warnings and treaties like Fort Laramie (1868).
         </p>
       </section>
 
       <section className="plan-section" ref={planRef}>
         <h2 className="section-title">How We Win</h2>
         <p className="section-text">
-          From 2025-2030, we’ll mobilize: pass sovereignty laws, empower sheriffs and tribes, establish juries, and shift taxes. By 2040, we’ll ratify amendments with 38 states and tribes. With $525-725 million—$50 trains a defender, $1,000 nullifies a law—we’ll reclaim our birthright, uniting 94% who see the unfairness (Gallup 2024).
+          Our 15-year roadmap starts March 2025: Phase 1 (2025-2030) launches with rallies in 50 state capitals and tribal lands (50,000 attendees), passing sovereignty laws in 50+ states and 574 tribes, empowering 60+ sheriffs and tribal leaders with 2,000+ militia units, and establishing 2,500+ juries to probe Pharma ($1.207T), education ($79.6B DOE), and forfeiture ($68B). By 2029, 35+ states and tribes shift to sales taxes or gaming, and 25 lawsuits reclaim $200M+. Phase 2 (2031-2040) calls a convention (34 states and 50 tribes by 2032), wins 45 lawsuits ($500M+), and ratifies amendments with 38 states and tribes by 2040. With $525-725M—$50 trains a defender, $1,000 nullifies a law, $1M secures a win—we’ll unite 94% who see the unfairness (Gallup 2024) and reclaim our birthright, as states and tribes have done from 1798 to Standing Rock (2016-2017).
         </p>
         <button className="cta-btn pulse-btn" onClick={handleDonate}>Donate Now</button>
       </section>
@@ -213,7 +213,7 @@ function App() {
           <div className="history-content">
             <h2 className="history-title">Our Mission</h2>
             <p className="history-text">
-              Revive America restores sovereignty to individuals, states, and tribes—countering an Elite Ruling Class with state nullification, tribal resilience, and community strength. We’re here to reclaim the founders’ vision by 2040.
+              Revive America restores sovereignty to individuals, states, and tribes—countering an Elite Ruling Class that’s turned our systems into tools of control. We expose corruption ($4.7 trillion taxes, IRS 2023; $68 billion forfeiture, IJ 2024), protect liberty through state nullification and tribal resilience, and empower communities to reclaim their rights, as envisioned in 1776 and defended in 1798, 1832, and beyond. By 2040, we’ll breathe new life into the bonds that once made us strong.
             </p>
             <button className="close-btn" onClick={() => setShowMission(false)}>Close</button>
           </div>
@@ -225,7 +225,7 @@ function App() {
           <div className="course-content">
             <h2 className="course-title">Our Plan</h2>
             <p className="course-text">
-              Phase 1 (2025-2030): Laws in 50+ states and 574 tribes, 60+ sheriffs and tribal leaders, 2,500+ juries. Phase 2 (2031-2040): Constitutional amendments with 38 states and tribes, $500M+ from lawsuits. Join us to win.
+              Phase 1 (2025-2030): Launch with 50+ state and 574 tribal sovereignty laws by 2027, empower 60+ sheriffs and tribal leaders with 2,500+ militia units by 2030, establish 2,500+ grand juries to judge elite abuses, shift 35+ states and tribes to sales taxes or gaming by 2029, and secure 25 lawsuit wins ($200M+). Phase 2 (2031-2040): Call a convention with 34 states and 50 tribes by 2032, win 45 lawsuits ($500M+), and ratify Constitutional amendments with 38 states and tribes by 2040. Join us to turn 94% outrage (Gallup 2024) into action.
             </p>
             <button className="close-btn" onClick={() => setShowPlan(false)}>Close</button>
           </div>
