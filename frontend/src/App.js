@@ -13,54 +13,61 @@ function App() {
   const [activeTab, setActiveTab] = useState('login');
   const [showMission, setShowMission] = useState(false);
   const [showPlan, setShowPlan] = useState(false);
-  const canvasRef = useRef(null);
+  const canvasRef = useRef(null); // Side starry band
+  const fullCanvasRef = useRef(null); // Full background starry effect
   const titleRef = useRef(null);
   const whyRef = useRef(null);
   const visionRef = useRef(null);
   const planRef = useRef(null);
 
-  // Array of 48 Cloudinary IDs
-  const flagIds = [
-    'l6njsafrg9lwoct4eeb3', 'xyd0bcukuopaydz4o9mp', 'raylbekbdwocdtcgcg46', 'kuuj78jyjuxlkcrcpi47',
-    'dpgt7dwg01kc29sxszyb', 'lkyikvm2dzlpwzfui9fe', 'swxaabqithhvzr1hfvcm', 'pk71tqqmyqzzwez1kfdn',
-    'noflkrjtula1tzypf4zv', 'jv9qtucpg30kg9eb1b9b', 'os5fspgk6xynxv4a4saf', 'hy8ylqifnzrlsfqrdoem',
-    'u3ryincxynybtevhjsvy', 'r70kk2kwygy9nljmb7y4', 'ggouo80ldyqfveik39g5', 'r8wd12ouuroc4rorfsum',
-    'ym6obmnavly3scbuu3qe', 'rhbuwqu3capcknl36cie', 'wqa0sfvxc1lqls6uxkdv', 'tqpmtzjhpkdu2cvcfgla',
-    'vze36at58zfivno5knvk', 'frdibyr1aoq7fqfqdwh2', 'asfszcpgam5wrja6b8pm', 'ntbdyr4boxm4mve9rcrk',
-    'esqpzcgkvlzwk19lsxmz', 'jqxs4yg62islx8nmd9dq', 'ipwbxekbyzbufmco28gq', 'jbgkizromgoy13ol3dfy',
-    'wtbnioq0brosxp7lnadk', 'e0gqkfg9efoitrochozs', 'jyssm6fawkvteb1cqmcs', 'ghqmcljid0igbvfwtfv8',
-    'hppl7ei9jjjnnyy2hybd', 'aldx63csf9l2fvz5wvmr', 'ou8j5w1sannhgjlszg92', 'hrfbqnvskphpxsyprixt',
-    'ulyqrjniymdgddj03t3m', 'cpix0dqaittydof3gpuv', 'tgpf6qkmuhhijof3qnae', 'xumykafht4ioj0gqkxxt',
-    'xs9phsyrsef2tpudrty2', 'rgwgzudyg38ouf9kgs4q', 'rho9ghaemvwdpyif9r9k', 'rb2exzbnp8qu1au77exj',
-    'y5aw0l1v475bphuz4ohe', 'gxllcfj1i3z3kpxq5ihk', 'zqvi6g414fsnigno8mzl', 'mihuvrak8yfcmblzywqy',
-    'ko4uornegfvgecy16nzy'
-  ];
-
   useEffect(() => {
+    // Side starry band
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext('2d');
     let animationFrameId;
 
-    const resizeCanvas = () => {
+    const resizeSideCanvas = () => {
       if (canvas) {
-        canvas.width = 50; // Fixed width for starry band
+        canvas.width = 50; // Fixed width for side band
         canvas.height = window.innerHeight;
       }
     };
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    resizeSideCanvas();
+    window.addEventListener('resize', resizeSideCanvas);
 
-    const stars = Array.from({ length: 50 }, () => ({
+    const sideStars = Array.from({ length: 50 }, () => ({
       x: Math.random() * 50,
       y: Math.random() * (canvas?.height || window.innerHeight),
       radius: Math.random() * 2 + 1,
       alpha: Math.random() * 0.5 + 0.5,
     }));
 
+    // Full background starry effect
+    const fullCanvas = fullCanvasRef.current;
+    const fullCtx = fullCanvas?.getContext('2d');
+    let fullAnimationFrameId;
+
+    const resizeFullCanvas = () => {
+      if (fullCanvas) {
+        fullCanvas.width = window.innerWidth;
+        fullCanvas.height = window.innerHeight;
+      }
+    };
+    resizeFullCanvas();
+    window.addEventListener('resize', resizeFullCanvas);
+
+    const fullStars = Array.from({ length: 200 }, () => ({
+      x: Math.random() * (fullCanvas?.width || window.innerWidth),
+      y: Math.random() * (fullCanvas?.height || window.innerHeight),
+      radius: Math.random() * 2 + 1,
+      alpha: Math.random() * 0.5 + 0.5,
+    }));
+
     const animate = () => {
+      // Side band animation
       if (ctx) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        stars.forEach((star) => {
+        sideStars.forEach((star) => {
           ctx.beginPath();
           ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
@@ -68,8 +75,22 @@ function App() {
           star.alpha += Math.random() * 0.05 - 0.025;
           star.alpha = Math.max(0.5, Math.min(1, star.alpha));
         });
-        animationFrameId = requestAnimationFrame(animate);
       }
+
+      // Full background animation
+      if (fullCtx) {
+        fullCtx.clearRect(0, 0, fullCanvas.width, fullCanvas.height);
+        fullStars.forEach((star) => {
+          fullCtx.beginPath();
+          fullCtx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+          fullCtx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+          fullCtx.fill();
+          star.alpha += Math.random() * 0.05 - 0.025;
+          star.alpha = Math.max(0.5, Math.min(1, star.alpha));
+        });
+      }
+
+      animationFrameId = requestAnimationFrame(animate);
     };
     animate();
 
@@ -99,7 +120,8 @@ function App() {
     }
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('resize', resizeSideCanvas);
+      window.removeEventListener('resize', resizeFullCanvas);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
   }, []);
@@ -143,6 +165,7 @@ function App() {
     window.open('https://reviveamerica.info/donate', '_blank');
   };
 
+  // Placeholder section image IDs (replace with your actual IDs after upload)
   const sectionImages = {
     landing: 'your-landing-image-id',
     why: 'your-why-image-id',
@@ -152,18 +175,7 @@ function App() {
 
   return (
     <div className="app">
-      {/* Flag Background Wrapper */}
-      <div className="flag-background">
-        {flagIds.map((id, index) => (
-          <img
-            key={index}
-            src={`https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_50,h_50,q_auto/${id}`}
-            alt={`Flag ${index + 1}`}
-            className="flag-tile"
-          />
-        ))}
-      </div>
-
+      <canvas ref={fullCanvasRef} className="full-starry-background" />
       <canvas ref={canvasRef} className="starry-background" />
       <div className="rotating-text-background">Revive America</div>
 
@@ -267,7 +279,7 @@ function App() {
             ) : (
               <form onSubmit={handleSignup} className="auth-form">
                 <input type="text" value={signupUsername} onChange={(e) => setSignupUsername(e.target.value)} placeholder="Choose Username" required />
-                <input type="password" value={signupPassword} onChange={(e) => setPassword(e.target.value)} placeholder="Choose Password" required />
+                <input type="password" value={signupPassword} onChange={(e) => setSignupPassword(e.target.value)} placeholder="Choose Password" required />
                 <button type="submit" className="submit-btn">Signup</button>
               </form>
             )}
@@ -301,7 +313,7 @@ function App() {
       )}
 
       <footer className="footer">
-        <p className="footer-text">Built by Zachary.© 2025 Revive America. All rights reserved.</p>
+        <p className="footer-text">© 2025 Revive America. All rights reserved.</p>
         <p className="contact-text">Contact: info@reviveamerica.info</p>
         <div className="social-links">
           <a href="https://x.com/ReviveAmerica" target="_blank" rel="noopener noreferrer" className="social-icon">

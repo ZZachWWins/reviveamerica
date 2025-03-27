@@ -4,32 +4,10 @@ body {
   font-family: 'Arial', sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
-  background: #000; /* Fallback color */
+  background: #1a2a44; /* Navy blue matching the side band */
   color: #f0f0f0; /* Slightly off-white for contrast */
   text-shadow: 0 0 10px rgba(255, 255, 255, 1), /* Stronger glow */
                0 0 2px rgba(0, 0, 0, 0.8); /* Subtle dark outline */
-}
-
-/* Flag Background */
-.flag-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 400px; /* 8 flags * 50px */
-  height: 300px; /* 6 flags * 50px */
-  display: grid;
-  grid-template-columns: repeat(8, 50px); /* 8 columns */
-  grid-template-rows: repeat(6, 50px); /* 6 rows */
-  background: transparent;
-  z-index: -1; /* Behind content */
-  background-repeat: repeat; /* Tile the entire grid */
-  background-size: 400px 300px; /* Size of the grid */
-}
-
-.flag-tile {
-  width: 50px;
-  height: 50px;
-  object-fit: cover; /* Ensure flags fit nicely */
 }
 
 .app {
@@ -41,7 +19,18 @@ body {
   border-left: 50px solid #1a2a44; /* Navy blue star field band */
 }
 
-/* Starry Background */
+/* Full Starry Background */
+.full-starry-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Behind all content */
+  pointer-events: none;
+}
+
+/* Side Starry Background */
 .starry-background {
   position: fixed;
   top: 0;
@@ -441,16 +430,5 @@ body {
   }
   .section-image img {
     border-radius: 10px 10px 0 0; /* Adjust for stacked layout */
-  }
-  .flag-background {
-    width: 200px; /* 8 flags * 25px */
-    height: 150px; /* 6 flags * 25px */
-    grid-template-columns: repeat(8, 25px); /* 8 columns, smaller tiles */
-    grid-template-rows: repeat(6, 25px); /* 6 rows, smaller tiles */
-    background-size: 200px 150px; /* Adjusted grid size */
-  }
-  .flag-tile {
-    width: 25px;
-    height: 25px;
   }
 }
