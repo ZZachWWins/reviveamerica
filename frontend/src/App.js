@@ -212,7 +212,7 @@ function App() {
           />
         </div>
         <div className="section-content">
-          <h2 className="landing-title">The Call to Revive</h2>
+          <h2 className="landing-title">The Call to Action</h2>
           <div className="landing-text">
             <p><strong>A Personal Call:</strong> Dear Fellow American, I am a child of this land, raised where neighbors were family, and we lived the promise of “Life, Liberty, and the pursuit of Happiness” (Declaration of Independence, 1776).</p>
             <p><strong>The Fading Dream:</strong> Today, that dream fades under an Elite Ruling Class—<span className="stat">$4.7 trillion in taxes</span> (IRS 2023), <span className="stat">$68 billion seized</span> (IJ 2024), <span className="stat">10.5 million arrests</span> (FBI 2022).</p>
