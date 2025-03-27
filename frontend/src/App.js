@@ -24,8 +24,6 @@ function App() {
     // Side starry band
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext('2d');
-    let animationFrameId;
-
     const resizeSideCanvas = () => {
       if (canvas) {
         canvas.width = 50; // Fixed width for side band
@@ -45,8 +43,6 @@ function App() {
     // Full background starry effect
     const fullCanvas = fullCanvasRef.current;
     const fullCtx = fullCanvas?.getContext('2d');
-    let fullAnimationFrameId; // Fixed: Properly declared and will be used
-
     const resizeFullCanvas = () => {
       if (fullCanvas) {
         fullCanvas.width = window.innerWidth;
@@ -56,12 +52,15 @@ function App() {
     resizeFullCanvas();
     window.addEventListener('resize', resizeFullCanvas);
 
-    const fullStars = Array.from({ length: 200 }, () => ({
+    const fullStars = Array.from({ length: 150 }, () => ({
       x: Math.random() * (fullCanvas?.width || window.innerWidth),
       y: Math.random() * (fullCanvas?.height || window.innerHeight),
       radius: Math.random() * 2 + 1,
       alpha: Math.random() * 0.5 + 0.5,
     }));
+
+    let animationFrameId;
+    let frameCount = 0; // For throttling alpha updates
 
     const animate = () => {
       // Side band animation
@@ -72,8 +71,11 @@ function App() {
           ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
           ctx.fill();
-          star.alpha += Math.random() * 0.05 - 0.025;
-          star.alpha = Math.max(0.5, Math.min(1, star.alpha));
+          // Update alpha every 5 frames to reduce load
+          if (frameCount % 5 === 0) {
+            star.alpha += Math.random() * 0.05 - 0.025;
+            star.alpha = Math.max(0.5, Math.min(1, star.alpha));
+          }
         });
       }
 
@@ -85,13 +87,16 @@ function App() {
           fullCtx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
           fullCtx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
           fullCtx.fill();
-          star.alpha += Math.random() * 0.05 - 0.025;
-          star.alpha = Math.max(0.5, Math.min(1, star.alpha));
+          // Update alpha every 5 frames to reduce load
+          if (frameCount % 5 === 0) {
+            star.alpha += Math.random() * 0.05 - 0.025;
+            star.alpha = Math.max(0.5, Math.min(1, star.alpha));
+          }
         });
       }
 
-      animationFrameId = requestAnimationFrame(animate); // Side band frame ID
-      fullAnimationFrameId = requestAnimationFrame(animate); // Full background frame ID
+      frameCount++; // Increment frame counter
+      animationFrameId = requestAnimationFrame(animate); // Single frame ID
     };
     animationFrameId = requestAnimationFrame(animate); // Initial call
 
@@ -124,7 +129,6 @@ function App() {
       window.removeEventListener('resize', resizeSideCanvas);
       window.removeEventListener('resize', resizeFullCanvas);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
-      if (fullAnimationFrameId) cancelAnimationFrame(fullAnimationFrameId); // Clean up full background animation
     };
   }, []);
 
