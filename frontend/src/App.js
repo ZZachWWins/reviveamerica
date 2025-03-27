@@ -292,7 +292,7 @@ function App() {
       )}
 
       <footer className="footer">
-        <p className="footer-text">© 2025 Revive America. All rights reserved.</p>
+        <p className="footer-text">Built By Zachary. © 2025 Revive America. All rights reserved.</p>
         <p className="contact-text">Contact: info@reviveamerica.info</p>
         <div className="social-links">
           <a href="https://x.com/ReviveAmerica" target="_blank" rel="noopener noreferrer" className="social-icon">
