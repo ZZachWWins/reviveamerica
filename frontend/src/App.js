@@ -45,7 +45,7 @@ function App() {
     // Full background starry effect
     const fullCanvas = fullCanvasRef.current;
     const fullCtx = fullCanvas?.getContext('2d');
-    let fullAnimationFrameId;
+    let fullAnimationFrameId; // Fixed: Properly declared and will be used
 
     const resizeFullCanvas = () => {
       if (fullCanvas) {
@@ -90,9 +90,10 @@ function App() {
         });
       }
 
-      animationFrameId = requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate); // Side band frame ID
+      fullAnimationFrameId = requestAnimationFrame(animate); // Full background frame ID
     };
-    animate();
+    animationFrameId = requestAnimationFrame(animate); // Initial call
 
     const title = titleRef.current;
     if (title) {
@@ -123,6 +124,7 @@ function App() {
       window.removeEventListener('resize', resizeSideCanvas);
       window.removeEventListener('resize', resizeFullCanvas);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      if (fullAnimationFrameId) cancelAnimationFrame(fullAnimationFrameId); // Clean up full background animation
     };
   }, []);
 
