@@ -4,87 +4,32 @@ body {
   font-family: 'Arial', sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
-  background: #000; /* Fallback color while images load */
+  background: #000; /* Fallback color */
   color: #f0f0f0; /* Slightly off-white for contrast */
   text-shadow: 0 0 10px rgba(255, 255, 255, 1), /* Stronger glow */
                0 0 2px rgba(0, 0, 0, 0.8); /* Subtle dark outline */
 }
 
 /* Flag Background */
-body {
-  background-image: 
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/l6njsafrg9lwoct4eeb3'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/xyd0bcukuopaydz4o9mp'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/raylbekbdwocdtcgcg46'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/kuuj78jyjuxlkcrcpi47'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/dpgt7dwg01kc29sxszyb'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/lkyikvm2dzlpwzfui9fe'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/swxaabqithhvzr1hfvcm'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/pk71tqqmyqzzwez1kfdn'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/noflkrjtula1tzypf4zv'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/jv9qtucpg30kg9eb1b9b'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/os5fspgk6xynxv4a4saf'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/hy8ylqifnzrlsfqrdoem'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/u3ryincxynybtevhjsvy'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/r70kk2kwygy9nljmb7y4'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/ggouo80ldyqfveik39g5'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/r8wd12ouuroc4rorfsum'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/ym6obmnavly3scbuu3qe'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/rhbuwqu3capcknl36cie'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/wqa0sfvxc1lqls6uxkdv'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/tqpmtzjhpkdu2cvcfgla'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/vze36at58zfivno5knvk'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/frdibyr1aoq7fqfqdwh2'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/asfszcpgam5wrja6b8pm'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/ntbdyr4boxm4mve9rcrk'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/esqpzcgkvlzwk19lsxmz'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/jqxs4yg62islx8nmd9dq'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/ipwbxekbyzbufmco28gq'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/jbgkizromgoy13ol3dfy'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/wtbnioq0brosxp7lnadk'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/e0gqkfg9efoitrochozs'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/jyssm6fawkvteb1cqmcs'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/ghqmcljid0igbvfwtfv8'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/hppl7ei9jjjnnyy2hybd'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/aldx63csf9l2fvz5wvmr'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/ou8j5w1sannhgjlszg92'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/hrfbqnvskphpxsyprixt'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/ulyqrjniymdgddj03t3m'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/cpix0dqaittydof3gpuv'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/tgpf6qkmuhhijof3qnae'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/xumykafht4ioj0gqkxxt'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/xs9phsyrsef2tpudrty2'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/rgwgzudyg38ouf9kgs4q'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/rho9ghaemvwdpyif9r9k'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/rb2exzbnp8qu1au77exj'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/y5aw0l1v475bphuz4ohe'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/gxllcfj1i3z3kpxq5ihk'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/zqvi6g414fsnigno8mzl'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/mihuvrak8yfcmblzywqy'),
-    url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/ko4uornegfvgecy16nzy');
-  background-size: 100px 100px; /* Uniform size for all flags */
-  background-repeat: no-repeat; /* Prevent individual images from repeating */
-  background-position: 
-    0 0, 100px 0, 200px 0, 300px 0, 400px 0, 500px 0, 600px 0, 700px 0, /* Row 1: 8 flags */
-    0 100px, 100px 100px, 200px 100px, 300px 100px, 400px 100px, 500px 100px, 600px 100px, 700px 100px, /* Row 2: 8 flags */
-    0 200px, 100px 200px, 200px 200px, 300px 200px, 400px 200px, 500px 200px, 600px 200px, 700px 200px, /* Row 3: 8 flags */
-    0 300px, 100px 300px, 200px 300px, 300px 300px, 400px 300px, 500px 300px, 600px 300px, 700px 300px, /* Row 4: 8 flags */
-    0 400px, 100px 400px, 200px 400px, 300px 400px, 400px 400px, 500px 400px, 600px 400px, 700px 400px, /* Row 5: 8 flags */
-    0 500px, 100px 500px, 200px 500px, 300px 500px, 400px 500px, 500px 500px, 600px 500px, 700px 500px; /* Row 6: 8 flags */
-}
-
-/* Add a repeating wrapper to tile the entire pattern */
-body::before {
-  content: '';
+.flag-background {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: inherit; /* Inherit the flag background */
-  background-size: 800px 600px; /* Size of the 8x6 grid (100px * 8, 100px * 6) */
-  background-repeat: repeat; /* Tile the entire grid */
+  width: 400px; /* 8 flags * 50px */
+  height: 300px; /* 6 flags * 50px */
+  display: grid;
+  grid-template-columns: repeat(8, 50px); /* 8 columns */
+  grid-template-rows: repeat(6, 50px); /* 6 rows */
+  background: transparent;
   z-index: -1; /* Behind content */
+  background-repeat: repeat; /* Tile the entire grid */
+  background-size: 400px 300px; /* Size of the grid */
+}
+
+.flag-tile {
+  width: 50px;
+  height: 50px;
+  object-fit: cover; /* Ensure flags fit nicely */
 }
 
 .app {
@@ -497,17 +442,15 @@ body::before {
   .section-image img {
     border-radius: 10px 10px 0 0; /* Adjust for stacked layout */
   }
-  body {
-    background-size: 50px 50px; /* Smaller flags on mobile */
-    background-position: 
-      0 0, 50px 0, 100px 0, 150px 0, 200px 0, 250px 0, 300px 0, 350px 0, /* Row 1: 8 flags */
-      0 50px, 50px 50px, 100px 50px, 150px 50px, 200px 50px, 250px 50px, 300px 50px, 350px 50px, /* Row 2: 8 flags */
-      0 100px, 50px 100px, 100px 100px, 150px 100px, 200px 100px, 250px 100px, 300px 100px, 350px 100px, /* Row 3: 8 flags */
-      0 150px, 50px 150px, 100px 150px, 150px 150px, 200px 150px, 250px 150px, 300px 150px, 350px 150px, /* Row 4: 8 flags */
-      0 200px, 50px 200px, 100px 200px, 150px 200px, 200px 200px, 250px 200px, 300px 200px, 350px 200px, /* Row 5: 8 flags */
-      0 250px, 50px 250px, 100px 250px, 150px 250px, 200px 250px, 250px 250px, 300px 250px, 350px 250px; /* Row 6: 8 flags */
+  .flag-background {
+    width: 200px; /* 8 flags * 25px */
+    height: 150px; /* 6 flags * 25px */
+    grid-template-columns: repeat(8, 25px); /* 8 columns, smaller tiles */
+    grid-template-rows: repeat(6, 25px); /* 6 rows, smaller tiles */
+    background-size: 200px 150px; /* Adjusted grid size */
   }
-  body::before {
-    background-size: 400px 300px; /* Size of the 8x6 grid (50px * 8, 50px * 6) */
+  .flag-tile {
+    width: 25px;
+    height: 25px;
   }
 }

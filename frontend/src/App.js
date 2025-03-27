@@ -19,15 +19,24 @@ function App() {
   const visionRef = useRef(null);
   const planRef = useRef(null);
 
-  useEffect(() => {
-    // Parallax effect for background
-    const handleScroll = () => {
-      const background = document.querySelector('.parallax-background');
-      const scrollPosition = window.scrollY;
-      background.style.transform = `translateY(${scrollPosition * 0.4}px)`; // Slower parallax
-    };
-    window.addEventListener('scroll', handleScroll);
+  // Array of 48 Cloudinary IDs
+  const flagIds = [
+    'l6njsafrg9lwoct4eeb3', 'xyd0bcukuopaydz4o9mp', 'raylbekbdwocdtcgcg46', 'kuuj78jyjuxlkcrcpi47',
+    'dpgt7dwg01kc29sxszyb', 'lkyikvm2dzlpwzfui9fe', 'swxaabqithhvzr1hfvcm', 'pk71tqqmyqzzwez1kfdn',
+    'noflkrjtula1tzypf4zv', 'jv9qtucpg30kg9eb1b9b', 'os5fspgk6xynxv4a4saf', 'hy8ylqifnzrlsfqrdoem',
+    'u3ryincxynybtevhjsvy', 'r70kk2kwygy9nljmb7y4', 'ggouo80ldyqfveik39g5', 'r8wd12ouuroc4rorfsum',
+    'ym6obmnavly3scbuu3qe', 'rhbuwqu3capcknl36cie', 'wqa0sfvxc1lqls6uxkdv', 'tqpmtzjhpkdu2cvcfgla',
+    'vze36at58zfivno5knvk', 'frdibyr1aoq7fqfqdwh2', 'asfszcpgam5wrja6b8pm', 'ntbdyr4boxm4mve9rcrk',
+    'esqpzcgkvlzwk19lsxmz', 'jqxs4yg62islx8nmd9dq', 'ipwbxekbyzbufmco28gq', 'jbgkizromgoy13ol3dfy',
+    'wtbnioq0brosxp7lnadk', 'e0gqkfg9efoitrochozs', 'jyssm6fawkvteb1cqmcs', 'ghqmcljid0igbvfwtfv8',
+    'hppl7ei9jjjnnyy2hybd', 'aldx63csf9l2fvz5wvmr', 'ou8j5w1sannhgjlszg92', 'hrfbqnvskphpxsyprixt',
+    'ulyqrjniymdgddj03t3m', 'cpix0dqaittydof3gpuv', 'tgpf6qkmuhhijof3qnae', 'xumykafht4ioj0gqkxxt',
+    'xs9phsyrsef2tpudrty2', 'rgwgzudyg38ouf9kgs4q', 'rho9ghaemvwdpyif9r9k', 'rb2exzbnp8qu1au77exj',
+    'y5aw0l1v475bphuz4ohe', 'gxllcfj1i3z3kpxq5ihk', 'zqvi6g414fsnigno8mzl', 'mihuvrak8yfcmblzywqy',
+    'ko4uornegfvgecy16nzy'
+  ];
 
+  useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext('2d');
     let animationFrameId;
@@ -90,7 +99,6 @@ function App() {
     }
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', resizeCanvas);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
@@ -135,9 +143,6 @@ function App() {
     window.open('https://reviveamerica.info/donate', '_blank');
   };
 
-  // Cloudinary background image ID
-  const backgroundImageId = 'l6njsafrg9lwoct4eeb3'; // Your provided ID
-  // Placeholder section image IDs (replace with your actual IDs after upload)
   const sectionImages = {
     landing: 'your-landing-image-id',
     why: 'your-why-image-id',
@@ -147,13 +152,17 @@ function App() {
 
   return (
     <div className="app">
-      {/* Parallax Background */}
-      <div
-        className="parallax-background"
-        style={{
-          backgroundImage: `url(https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_3840,q_auto/${backgroundImageId})`,
-        }}
-      ></div>
+      {/* Flag Background Wrapper */}
+      <div className="flag-background">
+        {flagIds.map((id, index) => (
+          <img
+            key={index}
+            src={`https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_50,h_50,q_auto/${id}`}
+            alt={`Flag ${index + 1}`}
+            className="flag-tile"
+          />
+        ))}
+      </div>
 
       <canvas ref={canvasRef} className="starry-background" />
       <div className="rotating-text-background">Revive America</div>
@@ -258,7 +267,7 @@ function App() {
             ) : (
               <form onSubmit={handleSignup} className="auth-form">
                 <input type="text" value={signupUsername} onChange={(e) => setSignupUsername(e.target.value)} placeholder="Choose Username" required />
-                <input type="password" value={signupPassword} onChange={(e) => setSignupPassword(e.target.value)} placeholder="Choose Password" required />
+                <input type="password" value={signupPassword} onChange={(e) => setPassword(e.target.value)} placeholder="Choose Password" required />
                 <button type="submit" className="submit-btn">Signup</button>
               </form>
             )}
@@ -292,7 +301,7 @@ function App() {
       )}
 
       <footer className="footer">
-        <p className="footer-text">Built By Zachary. © 2025 Revive America. All rights reserved.</p>
+        <p className="footer-text">Built by Zachary.© 2025 Revive America. All rights reserved.</p>
         <p className="contact-text">Contact: info@reviveamerica.info</p>
         <div className="social-links">
           <a href="https://x.com/ReviveAmerica" target="_blank" rel="noopener noreferrer" className="social-icon">
