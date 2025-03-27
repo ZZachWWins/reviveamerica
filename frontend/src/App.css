@@ -12,7 +12,7 @@ body {
 
 /* Flag Background */
 body {
-  background: 
+  background-image: 
     url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/l6njsafrg9lwoct4eeb3'),
     url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/xyd0bcukuopaydz4o9mp'),
     url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/raylbekbdwocdtcgcg46'),
@@ -63,14 +63,28 @@ body {
     url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/mihuvrak8yfcmblzywqy'),
     url('https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_100,h_100,q_auto/ko4uornegfvgecy16nzy');
   background-size: 100px 100px; /* Uniform size for all flags */
-  background-repeat: repeat; /* Tile across the background */
+  background-repeat: no-repeat; /* Prevent individual images from repeating */
   background-position: 
-    0 0, 100px 0, 200px 0, 300px 0, 400px 0, 500px 0, 600px 0, 700px 0, /* Row 1 */
-    0 100px, 100px 100px, 200px 100px, 300px 100px, 400px 100px, 500px 100px, 600px 100px, 700px 100px, /* Row 2 */
-    0 200px, 100px 200px, 200px 200px, 300px 200px, 400px 200px, 500px 200px, 600px 200px, 700px 200px, /* Row 3 */
-    0 300px, 100px 300px, 200px 300px, 300px 300px, 400px 300px, 500px 300px, 600px 300px, 700px 300px, /* Row 4 */
-    0 400px, 100px 400px, 200px 400px, 300px 400px, 400px 400px, 500px 400px, 600px 400px, 700px 400px, /* Row 5 */
-    0 500px, 100px 500px, 200px 500px, 300px 500px, 400px 500px, 500px 500px, 600px 500px, 700px 500px; /* Row 6 partial */
+    0 0, 100px 0, 200px 0, 300px 0, 400px 0, 500px 0, 600px 0, 700px 0, /* Row 1: 8 flags */
+    0 100px, 100px 100px, 200px 100px, 300px 100px, 400px 100px, 500px 100px, 600px 100px, 700px 100px, /* Row 2: 8 flags */
+    0 200px, 100px 200px, 200px 200px, 300px 200px, 400px 200px, 500px 200px, 600px 200px, 700px 200px, /* Row 3: 8 flags */
+    0 300px, 100px 300px, 200px 300px, 300px 300px, 400px 300px, 500px 300px, 600px 300px, 700px 300px, /* Row 4: 8 flags */
+    0 400px, 100px 400px, 200px 400px, 300px 400px, 400px 400px, 500px 400px, 600px 400px, 700px 400px, /* Row 5: 8 flags */
+    0 500px, 100px 500px, 200px 500px, 300px 500px, 400px 500px, 500px 500px, 600px 500px, 700px 500px; /* Row 6: 8 flags */
+}
+
+/* Add a repeating wrapper to tile the entire pattern */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit; /* Inherit the flag background */
+  background-size: 800px 600px; /* Size of the 8x6 grid (100px * 8, 100px * 6) */
+  background-repeat: repeat; /* Tile the entire grid */
+  z-index: -1; /* Behind content */
 }
 
 .app {
@@ -486,11 +500,14 @@ body {
   body {
     background-size: 50px 50px; /* Smaller flags on mobile */
     background-position: 
-      0 0, 50px 0, 100px 0, 150px 0, 200px 0, 250px 0, 300px 0, 350px 0, /* Row 1 */
-      0 50px, 50px 50px, 100px 50px, 150px 50px, 200px 50px, 250px 50px, 300px 50px, 350px 50px, /* Row 2 */
-      0 100px, 50px 100px, 100px 100px, 150px 100px, 200px 100px, 250px 100px, 300px 100px, 350px 100px, /* Row 3 */
-      0 150px, 50px 150px, 100px 150px, 150px 150px, 200px 150px, 250px 150px, 300px 150px, 350px 150px, /* Row 4 */
-      0 200px, 50px 200px, 100px 200px, 150px 200px, 200px 200px, 250px 200px, 300px 200px, 350px 200px, /* Row 5 */
-      0 250px, 50px 250px, 100px 250px, 150px 250px, 200px 250px, 250px 250px, 300px 250px, 350px 250px; /* Row 6 partial */
+      0 0, 50px 0, 100px 0, 150px 0, 200px 0, 250px 0, 300px 0, 350px 0, /* Row 1: 8 flags */
+      0 50px, 50px 50px, 100px 50px, 150px 50px, 200px 50px, 250px 50px, 300px 50px, 350px 50px, /* Row 2: 8 flags */
+      0 100px, 50px 100px, 100px 100px, 150px 100px, 200px 100px, 250px 100px, 300px 100px, 350px 100px, /* Row 3: 8 flags */
+      0 150px, 50px 150px, 100px 150px, 150px 150px, 200px 150px, 250px 150px, 300px 150px, 350px 150px, /* Row 4: 8 flags */
+      0 200px, 50px 200px, 100px 200px, 150px 200px, 200px 200px, 250px 200px, 300px 200px, 350px 200px, /* Row 5: 8 flags */
+      0 250px, 50px 250px, 100px 250px, 150px 250px, 200px 250px, 250px 250px, 300px 250px, 350px 250px; /* Row 6: 8 flags */
+  }
+  body::before {
+    background-size: 400px 300px; /* Size of the 8x6 grid (50px * 8, 50px * 6) */
   }
 }
