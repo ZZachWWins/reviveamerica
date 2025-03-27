@@ -2,12 +2,26 @@
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background: #ffffff; /* White base */
-  color: #f0f0f0; /* Slightly off-white for contrast */
   min-height: 100vh;
   overflow-x: hidden;
+  background: #000; /* Fallback color while image loads */
+  color: #f0f0f0; /* Slightly off-white for contrast */
   text-shadow: 0 0 10px rgba(255, 255, 255, 1), /* Stronger glow */
                0 0 2px rgba(0, 0, 0, 0.8); /* Subtle dark outline */
+}
+
+/* Parallax Background */
+.parallax-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -2; /* Behind everything */
+  will-change: transform; /* Optimize parallax */
 }
 
 .app {
@@ -16,13 +30,6 @@ body {
   padding: 20px;
   position: relative;
   z-index: 1;
-  background: repeating-linear-gradient(
-    to bottom,
-    #ffffff 0,
-    #ffffff 60px,
-    #ff0000 60px,
-    #ff0000 120px
-  ); /* Red and white stripes */
   border-left: 50px solid #1a2a44; /* Navy blue star field band */
 }
 
@@ -62,7 +69,7 @@ body {
 .header {
   text-align: center;
   padding: 25px;
-  background: rgba(50, 50, 50, 0.5); /* Darker grey glass */
+  background: rgba(50, 50, 50, 0.5); /* Dark grey glass */
   backdrop-filter: blur(10px);
   border-bottom: 8px solid rgba(255, 0, 0, 0.7);
   border-top: 8px solid rgba(255, 0, 0, 0.7);
@@ -121,32 +128,40 @@ body {
   box-shadow: 0 6px 20px rgba(255, 0, 0, 0.5);
 }
 
-/* Landing Section */
-.landing-section {
-  text-align: center;
-  padding: 50px 25px;
-  background: rgba(50, 50, 50, 0.5); /* Darker grey glass */
+/* Section Styles with Images */
+.landing-section, .why-i-am-section, .vision-section, .plan-section {
+  display: flex;
+  align-items: center;
+  padding: 25px;
+  background: rgba(50, 50, 50, 0.5); /* Dark grey glass */
   backdrop-filter: blur(12px);
   border: 5px solid rgba(26, 42, 68, 0.5);
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   margin-bottom: 40px;
   position: relative;
+  overflow: hidden; /* Ensure image stays within rounded borders */
 }
 
-/* General Section Styles */
-.why-i-am-section, .vision-section, .plan-section {
+.section-image {
+  flex: 0 0 300px; /* Fixed width for image */
+  height: 400px; /* Fixed height */
+  margin-right: 25px;
+}
+
+.section-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Crop to fit */
+  border-radius: 10px 0 0 10px; /* Match left side of section */
+}
+
+.section-content {
+  flex: 1;
   text-align: left;
-  padding: 50px 25px;
-  background: rgba(50, 50, 50, 0.5); /* Darker grey glass */
-  backdrop-filter: blur(12px);
-  border: 5px solid rgba(26, 42, 68, 0.5);
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  margin-bottom: 40px;
 }
 
-.section-title {
+.landing-title, .section-title {
   font-size: 2.5rem;
   font-weight: 800;
   color: #ff0000; /* Red */
@@ -154,24 +169,7 @@ body {
   text-shadow: 0 0 8px rgba(255, 0, 0, 0.6); /* Red glow */
 }
 
-.section-text {
-  font-size: 1.4rem;
-  color: #f0f0f0; /* Off-white */
-  margin: 0 0 25px;
-  line-height: 1.7;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 1), /* Strong glow */
-               0 0 2px rgba(0, 0, 0, 0.8); /* Dark outline */
-}
-
-.landing-title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #ff0000; /* Red */
-  margin-bottom: 25px;
-  text-shadow: 0 0 8px rgba(255, 0, 0, 0.6); /* Red glow */
-}
-
-.landing-text {
+.landing-text, .section-text {
   font-size: 1.4rem;
   color: #f0f0f0; /* Off-white */
   margin: 0 0 25px;
@@ -422,4 +420,18 @@ body {
   .footer-text, .contact-text { font-size: 1.1rem; }
   .social-icon { font-size: 1.6rem; }
   .rotating-text-background { font-size: 4rem; }
+  .landing-section, .why-i-am-section, .vision-section, .plan-section {
+    flex-direction: column;
+    padding: 15px;
+  }
+  .section-image {
+    flex: none;
+    width: 100%;
+    height: 200px;
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+  .section-image img {
+    border-radius: 10px 10px 0 0; /* Adjust for stacked layout */
+  }
 }
