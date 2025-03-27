@@ -13,20 +13,19 @@ function App() {
   const [activeTab, setActiveTab] = useState('login');
   const [showMission, setShowMission] = useState(false);
   const [showPlan, setShowPlan] = useState(false);
-  const canvasRef = useRef(null); // Side starry band
-  const fullCanvasRef = useRef(null); // Full background starry effect
+  const canvasRef = useRef(null);
+  const fullCanvasRef = useRef(null);
   const titleRef = useRef(null);
   const whyRef = useRef(null);
   const visionRef = useRef(null);
   const planRef = useRef(null);
 
   useEffect(() => {
-    // Side starry band
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext('2d');
     const resizeSideCanvas = () => {
       if (canvas) {
-        canvas.width = 50; // Fixed width for side band
+        canvas.width = 50;
         canvas.height = window.innerHeight;
       }
     };
@@ -40,7 +39,6 @@ function App() {
       alpha: Math.random() * 0.5 + 0.5,
     }));
 
-    // Full background starry effect
     const fullCanvas = fullCanvasRef.current;
     const fullCtx = fullCanvas?.getContext('2d');
     const resizeFullCanvas = () => {
@@ -60,10 +58,9 @@ function App() {
     }));
 
     let animationFrameId;
-    let frameCount = 0; // For throttling alpha updates
+    let frameCount = 0;
 
     const animate = () => {
-      // Side band animation
       if (ctx) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         sideStars.forEach((star) => {
@@ -71,7 +68,6 @@ function App() {
           ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
           ctx.fill();
-          // Update alpha every 5 frames to reduce load
           if (frameCount % 5 === 0) {
             star.alpha += Math.random() * 0.05 - 0.025;
             star.alpha = Math.max(0.5, Math.min(1, star.alpha));
@@ -79,7 +75,6 @@ function App() {
         });
       }
 
-      // Full background animation
       if (fullCtx) {
         fullCtx.clearRect(0, 0, fullCanvas.width, fullCanvas.height);
         fullStars.forEach((star) => {
@@ -87,7 +82,6 @@ function App() {
           fullCtx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
           fullCtx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
           fullCtx.fill();
-          // Update alpha every 5 frames to reduce load
           if (frameCount % 5 === 0) {
             star.alpha += Math.random() * 0.05 - 0.025;
             star.alpha = Math.max(0.5, Math.min(1, star.alpha));
@@ -95,10 +89,10 @@ function App() {
         });
       }
 
-      frameCount++; // Increment frame counter
-      animationFrameId = requestAnimationFrame(animate); // Single frame ID
+      frameCount++;
+      animationFrameId = requestAnimationFrame(animate);
     };
-    animationFrameId = requestAnimationFrame(animate); // Initial call
+    animationFrameId = requestAnimationFrame(animate);
 
     const title = titleRef.current;
     if (title) {
@@ -171,7 +165,6 @@ function App() {
     window.open('https://reviveamerica.info/donate', '_blank');
   };
 
-  // Placeholder section image IDs (replace with your actual IDs after upload)
   const sectionImages = {
     landing: 'your-landing-image-id',
     why: 'your-why-image-id',
@@ -184,6 +177,10 @@ function App() {
       <canvas ref={fullCanvasRef} className="full-starry-background" />
       <canvas ref={canvasRef} className="starry-background" />
       <div className="rotating-text-background">Revive America</div>
+
+      <div className="hero-slogan">
+        <span>“Liberty Starts Here.”</span>
+      </div>
 
       <header className="header">
         <h1 ref={titleRef} className="title">Revive America</h1>
@@ -198,9 +195,16 @@ function App() {
             <button onClick={() => setShowAuth(true)} className="auth-btn">Sign Up or Log In</button>
           )}
         </div>
+        <nav className="section-nav">
+          <a href="#landing-section" title="The Call"></a>
+          <a href="#why-i-am-section" title="Why We Fight"></a>
+          <a href="#vision-section" title="Our Vision"></a>
+          <a href="#plan-section" title="How We Win"></a>
+          <a href="#testimonials" title="Voices"></a>
+        </nav>
       </header>
 
-      <section className="landing-section">
+      <section id="landing-section" className="landing-section">
         <div className="section-image">
           <img
             src={`https://res.cloudinary.com/dhohkn6wl/image/upload/c_fill,w_300,h_400,g_auto/${sectionImages.landing}`}
@@ -209,16 +213,18 @@ function App() {
         </div>
         <div className="section-content">
           <h2 className="landing-title">The Call to Revive</h2>
-          <p className="landing-text">
-            Dear Fellow American, I am a child of this land, raised where neighbors were family, and we lived the promise of “Life, Liberty, and the pursuit of Happiness” (Declaration of Independence, 1776). Today, that dream fades under an Elite Ruling Class—$4.7 trillion in taxes (IRS 2023), $68 billion seized (IJ 2024), 10.5 million arrests (FBI 2022)—but we can restore it. Join us to revive the founders’ vision: a union of sovereign states and tribes, where liberty flows from individuals to communities, not distant elites.
-          </p>
+          <div className="landing-text">
+            <p><strong>A Personal Call:</strong> Dear Fellow American, I am a child of this land, raised where neighbors were family, and we lived the promise of “Life, Liberty, and the pursuit of Happiness” (Declaration of Independence, 1776).</p>
+            <p><strong>The Fading Dream:</strong> Today, that dream fades under an Elite Ruling Class—<span className="stat">$4.7 trillion in taxes</span> (IRS 2023), <span className="stat">$68 billion seized</span> (IJ 2024), <span className="stat">10.5 million arrests</span> (FBI 2022).</p>
+            <p><strong>Our Fight:</strong> Join us to revive the founders’ vision: a union of sovereign states and tribes, where liberty flows from individuals to communities, not distant elites.</p>
+          </div>
           <button className="cta-btn" onClick={() => setShowMission(true)}>Our Mission</button>
           <button className="cta-btn" onClick={() => setShowPlan(true)}>Our Plan</button>
           <button className="cta-btn" onClick={handleDonate}>Support the Revival</button>
         </div>
       </section>
 
-      <section className="why-i-am-section" ref={whyRef}>
+      <section id="why-i-am-section" className="why-i-am-section" ref={whyRef}>
         <div className="section-image">
           <img
             src={`https://res.cloudinary.com/dhohkn6wl/image/upload/c_fill,w_300,h_400,g_auto/${sectionImages.why}`}
@@ -227,13 +233,15 @@ function App() {
         </div>
         <div className="section-content">
           <h2 className="section-title">Why We Fight</h2>
-          <p className="section-text">
-            Once, we thrived in tight-knit communities—farming, ranching, hunting together—guided by state and tribal sovereignty, not elite dictates. Now, my hometown and countless others struggle, dimmed by a system that hoards $44 trillion for the 1% (Federal Reserve 2023), spends $14.4 billion on elections for millionaires (OpenSecrets 2023), and enforces control through 10.5 million arrests (Vera 2022). History screams resistance: the Whiskey Rebellion (1794) crushed for opposing taxes, Virginia and Kentucky’s Resolutions (1798) defying federal overreach, South Carolina’s Nullification (1832) against tariffs, and the Cherokee’s stand in Worcester v. Georgia (1832) betrayed by the Trail of Tears. We fight to revive their legacy—because 94% of us see this unfairness (Gallup 2024) and know it’s not the America our founders built.
-          </p>
+          <div className="section-text">
+            <p><strong>Our Roots:</strong> Once, we thrived in tight-knit communities—farming, ranching, hunting together—guided by state and tribal sovereignty, not elite dictates.</p>
+            <p><strong>The Struggle:</strong> Now, my hometown and countless others dim under a system that hoards <span className="stat">$44 trillion for the 1%</span> (Federal Reserve 2023), spends <span className="stat">$14.4 billion on elections</span> for millionaires (OpenSecrets 2023), and enforces control with <span className="stat">10.5 million arrests</span> (Vera 2022).</p>
+            <p><strong>Our Legacy:</strong> History screams resistance: the Whiskey Rebellion (1794), Virginia and Kentucky’s Resolutions (1798), South Carolina’s Nullification (1832), and the Cherokee’s stand in Worcester v. Georgia (1832). We fight because <span className="stat">94% of us see this unfairness</span> (Gallup 2024).</p>
+          </div>
         </div>
       </section>
 
-      <section className="vision-section" ref={visionRef}>
+      <section id="vision-section" className="vision-section" ref={visionRef}>
         <div className="section-image">
           <img
             src={`https://res.cloudinary.com/dhohkn6wl/image/upload/c_fill,w_300,h_400,g_auto/${sectionImages.vision}`}
@@ -242,13 +250,15 @@ function App() {
         </div>
         <div className="section-content">
           <h2 className="section-title">Our Vision</h2>
-          <p className="section-text">
-            By 2040, we’ll rebuild a union of sovereign states and tribes: 50+ states and 574 tribes nullifying federal overreach on taxes ($4.7 trillion, IRS 2023), health ($1.207 trillion Pharma, Statista 2025), and property ($68 billion forfeiture, IJ 2024). Over 60 sheriffs and tribal leaders will train 30,000-60,000 defenders, echoing the Whiskey Rebellion farmers and Texas border guards (2023-2025). Citizen grand juries (2,500+) will judge elite abuses, as in 1798 and 1854. Economic freedom will rise with 35+ states and tribes shifting to sales taxes or gaming compacts, like nine no-income-tax states and the Seminole ($2.5 billion, 2023). Legal victories (40-60 lawsuits, $500M+) and a Constitutional amendment by 38 states and tribes will banish elite influence, fulfilling the Anti-Federalists’ 1787 warnings and treaties like Fort Laramie (1868).
-          </p>
+          <div className="section-text">
+            <p><strong>By 2040:</strong> 50 states and 574 tribes will break free—nullifying <span className="stat">$4.7 trillion in taxes</span> (IRS 2023), <span className="stat">$1.207 trillion in health overreach</span> (Statista 2025), and <span className="stat">$68 billion in forfeiture</span> (IJ 2024).</p>
+            <p><strong>Defenders:</strong> Over 60 sheriffs and tribal leaders will train 30,000-60,000 defenders, echoing the Whiskey Rebellion and Texas border guards (2023-2025).</p>
+            <p><strong>Freedom:</strong> 35+ states and tribes shift to sales taxes or gaming, with <span className="stat">40-60 lawsuits</span> and a Constitutional amendment banning elite influence.</p>
+          </div>
         </div>
       </section>
 
-      <section className="plan-section" ref={planRef}>
+      <section id="plan-section" className="plan-section" ref={planRef}>
         <div className="section-image">
           <img
             src={`https://res.cloudinary.com/dhohkn6wl/image/upload/c_fill,w_300,h_400,g_auto/${sectionImages.plan}`}
@@ -257,10 +267,20 @@ function App() {
         </div>
         <div className="section-content">
           <h2 className="section-title">How We Win</h2>
-          <p className="section-text">
-            Our 15-year roadmap starts March 2025: Phase 1 (2025-2030) launches with rallies in 50 state capitals and tribal lands (50,000 attendees), passing sovereignty laws in 50+ states and 574 tribes, empowering 60+ sheriffs and tribal leaders with 2,000+ militia units, and establishing 2,500+ juries to probe Pharma ($1.207T), education ($79.6B DOE), and forfeiture ($68B). By 2029, 35+ states and tribes shift to sales taxes or gaming, and 25 lawsuits reclaim $200M+. Phase 2 (2031-2040) calls a convention (34 states and 50 tribes by 2032), wins 45 lawsuits ($500M+), and ratifies amendments with 38 states and tribes by 2040. With $525-725M—$50 trains a defender, $1,000 nullifies a law, $1M secures a win—we’ll unite 94% who see the unfairness (Gallup 2024) and reclaim our birthright, as states and tribes have done from 1798 to Standing Rock (2016-2017).
-          </p>
+          <div className="section-text">
+            <p><strong>Phase 1 (2025-2030):</strong> Launch with rallies in 50 state capitals and tribal lands (<span className="stat">50,000 attendees</span>), pass sovereignty laws, empower 60+ sheriffs with <span className="stat">2,000+ militia units</span>, and establish <span className="stat">2,500+ juries</span>.</p>
+            <p><strong>Phase 2 (2031-2040):</strong> Call a convention with 34 states and 50 tribes by 2032, win <span className="stat">45 lawsuits ($500M+)</span>, and ratify amendments by 2040.</p>
+            <p><strong>Our Power:</strong> With <span className="stat">$525-725M</span>, we’ll unite the <span className="stat">94%</span> who see the unfairness (Gallup 2024).</p>
+          </div>
           <button className="cta-btn pulse-btn" onClick={handleDonate}>Donate Now</button>
+        </div>
+      </section>
+
+      <section id="testimonials" className="testimonials">
+        <h2 className="section-title">Voices of Revival</h2>
+        <div className="testimonial-text">
+          <p>“This is our chance to take back what’s ours.” — John, Texas</p>
+          <p>“A movement for the people, by the people.” — Sarah, Montana</p>
         </div>
       </section>
 
@@ -320,13 +340,19 @@ function App() {
 
       <footer className="footer">
         <p className="footer-text">© 2025 Revive America. All rights reserved.</p>
-        <p className="contact-text">Contact: info@reviveamerica.info</p>
+        <p className="contact-text">
+          <a href="mailto:info@reviveamerica.info">Contact: info@reviveamerica.info</a>
+        </p>
         <div className="social-links">
           <a href="https://x.com/ReviveAmerica" target="_blank" rel="noopener noreferrer" className="social-icon">
             <i className="fab fa-twitter"></i>
           </a>
         </div>
       </footer>
+
+      <button className="back-to-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        ↑
+      </button>
     </div>
   );
 }
