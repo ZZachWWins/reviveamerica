@@ -170,10 +170,10 @@ function App() {
   };
 
   const sectionImages = {
-    landing: 'your-landing-image-id', // Placeholder unchanged
-    why: 'ko4uornegfvgecy16nzy',      // Updated for "Why We Fight"
-    vision: 'ggouo80ldyqfveik39g5',   // Updated for "The Vision"
-    plan: 'your-plan-image-id',        // Placeholder unchanged
+    landing: 'your-landing-image-id',
+    why: 'ko4uornegfvgecy16nzy',
+    vision: 'ggouo80ldyqfveik39g5',
+    plan: 'your-plan-image-id',
   };
 
   return (
@@ -218,7 +218,7 @@ function App() {
         </div>
         <div className="section-content">
           <h2 className="landing-title">Part 1: The Call</h2>
-          <button className="cta-btn" onClick={() => setShowCallText(!showCallText)}>
+          <button className="cta-btn pulse-btn" onClick={() => setShowCallText(!showCallText)}>
             {showCallText ? 'Hide The Call' : 'Read The Call'}
           </button>
           <button className="cta-btn" onClick={() => setShowMission(true)}>Our Mission</button>
@@ -247,7 +247,7 @@ function App() {
         </div>
         <div className="section-content">
           <h2 className="section-title">Part 1: Why We Fight</h2>
-          <button className="cta-btn" onClick={() => setShowWhyText(!showWhyText)}>
+          <button className="cta-btn pulse-btn" onClick={() => setShowWhyText(!showWhyText)}>
             {showWhyText ? 'Hide Why We Fight' : 'Read Why We Fight'}
           </button>
           <div className="section-text">
@@ -276,7 +276,7 @@ function App() {
         </div>
         <div className="section-content">
           <h2 className="section-title">Part 2: The Vision</h2>
-          <button className="cta-btn" onClick={() => setShowVisionText(!showVisionText)}>
+          <button className="cta-btn pulse-btn" onClick={() => setShowVisionText(!showVisionText)}>
             {showVisionText ? 'Hide Our Vision' : 'Read Our Vision'}
           </button>
           <div className="section-text">
@@ -363,7 +363,7 @@ function App() {
       <section id="donor-pitch" className="donor-pitch">
         <div className="section-content">
           <h2 className="section-title">Your Role in Revival</h2>
-          <button className="cta-btn" onClick={() => setShowDonorText(!showDonorText)}>
+          <button className="cta-btn pulse-btn" onClick={() => setShowDonorText(!showDonorText)}>
             {showDonorText ? 'Hide Your Role' : 'Read Your Role'}
           </button>
           <div className="section-text">
