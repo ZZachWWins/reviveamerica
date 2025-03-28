@@ -170,10 +170,10 @@ function App() {
   };
 
   const sectionImages = {
-    landing: 'your-landing-image-id',
-    why: 'your-why-image-id',
-    vision: 'your-vision-image-id',
-    plan: 'your-plan-image-id',
+    landing: 'your-landing-image-id', // Placeholder unchanged
+    why: 'ko4uornegfvgecy16nzy',      // Updated for "Why We Fight"
+    vision: 'ggouo80ldyqfveik39g5',   // Updated for "The Vision"
+    plan: 'your-plan-image-id',        // Placeholder unchanged
   };
 
   return (
@@ -241,7 +241,7 @@ function App() {
       <section id="why-i-am-section" className="why-i-am-section" ref={whyRef}>
         <div className="section-image">
           <img
-            src={`https://res.cloudinary.com/dhohkn6wl/image/upload/v1743096730/ko4uornegfvgecy16nzy.jpg/c_fill,w_300,h_400,g_auto/${sectionImages.why}`}
+            src={`https://res.cloudinary.com/dhohkn6wl/image/upload/c_fill,w_300,h_400,g_auto/${sectionImages.why}`}
             alt="Why We Fight"
           />
         </div>
