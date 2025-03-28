@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif; /* Poppins globally */
   background: #0a0a23; /* Dark blue base for starry effect */
   overflow-x: hidden;
 }
@@ -16,6 +16,7 @@ body {
   position: relative;
   min-height: 100vh;
   padding: 20px;
+  font-family: 'Poppins', sans-serif; /* Ensure app inherits Poppins */
 }
 
 /* Starry Backgrounds */
@@ -44,6 +45,8 @@ body {
   left: 50%;
   transform: translate(-50%, -50%) rotate(-45deg);
   font-size: 10rem;
+  font-family: 'Poppins', sans-serif; /* Poppins for rotating text */
+  font-weight: 700; /* Bold for emphasis */
   color: rgba(255, 255, 255, 0.05);
   z-index: -3;
   white-space: nowrap;
@@ -63,6 +66,8 @@ body {
 .auth-title,
 .history-title {
   color: #ff0000; /* Red titles */
+  font-family: 'Poppins', sans-serif; /* Poppins for titles */
+  font-weight: 700; /* Bold titles */
   font-size: 3.5rem; /* Default for h1 */
   margin-bottom: 10px;
 }
@@ -86,6 +91,8 @@ body {
 .auth-form input::placeholder,
 .history-text {
   color: #ffd700; /* Gold body text */
+  font-family: 'Poppins', sans-serif; /* Poppins for body text */
+  font-weight: 400; /* Regular weight for body */
   text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); /* Subtle gold glow */
 }
 
@@ -102,6 +109,8 @@ body {
 .auth-btn {
   padding: 10px 20px;
   font-size: 1rem;
+  font-family: 'Poppins', sans-serif; /* Poppins for buttons */
+  font-weight: 500; /* Medium weight for buttons */
   background: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 5px;
@@ -142,6 +151,8 @@ body {
   text-align: center;
   margin: 20px 0;
   font-size: 1.5rem;
+  font-family: 'Poppins', sans-serif; /* Poppins for slogan */
+  font-weight: 400; /* Regular weight */
   font-style: italic;
 }
 
@@ -185,6 +196,8 @@ body {
 .cta-btn {
   padding: 12px 24px;
   font-size: 1.1rem;
+  font-family: 'Poppins', sans-serif; /* Poppins for buttons */
+  font-weight: 500; /* Medium weight */
   background: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 5px;
@@ -213,6 +226,8 @@ body {
 .full-text {
   margin-top: 20px;
   font-size: 1rem;
+  font-family: 'Poppins', sans-serif; /* Poppins for text */
+  font-weight: 400; /* Regular weight */
   line-height: 1.6;
   max-width: 800px;
 }
@@ -227,6 +242,8 @@ body {
 
 /* Testimonials */
 .testimonial-text {
+  font-family: 'Poppins', sans-serif; /* Poppins for testimonials */
+  font-weight: 400; /* Regular weight */
   font-style: italic;
   opacity: 0.9;
 }
@@ -265,6 +282,8 @@ body {
 
 .tab-btn {
   padding: 10px 20px;
+  font-family: 'Poppins', sans-serif; /* Poppins for tabs */
+  font-weight: 500; /* Medium weight */
   background: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 5px;
@@ -290,15 +309,24 @@ body {
 .auth-form input {
   padding: 10px;
   font-size: 1rem;
+  font-family: 'Poppins', sans-serif; /* Poppins for inputs */
+  font-weight: 400; /* Regular weight */
   background: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 5px;
   color: #ffd700; /* Gold text */
 }
 
+.auth-form input::placeholder {
+  font-family: 'Poppins', sans-serif; /* Poppins for placeholders */
+  font-weight: 400;
+}
+
 .submit-btn {
   padding: 10px;
   font-size: 1rem;
+  font-family: 'Poppins', sans-serif; /* Poppins for submit */
+  font-weight: 500; /* Medium weight */
   background: rgba(255, 255, 255, 0.2);
   border: none;
   border-radius: 5px;
@@ -315,6 +343,8 @@ body {
   margin-top: 20px;
   padding: 10px 20px;
   font-size: 1rem;
+  font-family: 'Poppins', sans-serif; /* Poppins for close button */
+  font-weight: 500; /* Medium weight */
   background: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 5px;
@@ -364,6 +394,8 @@ body {
 .contact-text a {
   text-decoration: none;
   color: #ffd700; /* Gold text */
+  font-family: 'Poppins', sans-serif; /* Poppins for links */
+  font-weight: 400; /* Regular weight */
 }
 
 .contact-text a:hover {
@@ -379,10 +411,7 @@ body {
   margin: 0 10px;
   text-decoration: none;
   color: #ffd700; /* Gold text */
-}
-
-.social-icon:hover {
-  opacity: 0.8;
+  font-family: 'Poppins', sans-serif; /* Poppins for icons (if applicable) */
 }
 
 /* Back to Top */
@@ -393,6 +422,8 @@ body {
   width: 40px;
   height: 40px;
   font-size: 1.5rem;
+  font-family: 'Poppins', sans-serif; /* Poppins for back-to-top */
+  font-weight: 500; /* Medium weight */
   background: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 50%;
