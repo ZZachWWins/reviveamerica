@@ -173,10 +173,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(10, 10, 35, 0.9); /* Glassy background */
+  background: rgba(10, 10, 35, 0.2); /* Lighter glassmorphism */
   backdrop-filter: blur(5px); /* Frosted glass effect */
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
 }
 
 .section-image {
@@ -191,6 +192,8 @@ body {
 
 .section-content {
   text-align: center;
+  /* Removed background and backdrop-filter to avoid overlap with parent */
+  padding: 0; /* Reset padding since parent handles the glass effect */
 }
 
 .cta-btn {
