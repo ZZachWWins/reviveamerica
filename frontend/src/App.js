@@ -212,7 +212,7 @@ function App() {
       <section id="landing-section" className="landing-section">
         <div className="section-image">
           <img
-            src={`https://res.cloudinary.com/dhohkn6wl/image/upload/c_fill,w_300,h_400,g_auto/${sectionImages.landing}`}
+            src={`https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_600/${sectionImages.landing}`}
             alt="Landing"
           />
         </div>
@@ -241,7 +241,7 @@ function App() {
       <section id="why-i-am-section" className="why-i-am-section" ref={whyRef}>
         <div className="section-image">
           <img
-            src={`https://res.cloudinary.com/dhohkn6wl/image/upload/c_fill,w_300,h_400,g_auto/${sectionImages.why}`}
+            src={`https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_600/${sectionImages.why}`}
             alt="Why We Fight"
           />
         </div>
@@ -270,7 +270,7 @@ function App() {
       <section id="vision-section" className="vision-section" ref={visionRef}>
         <div className="section-image">
           <img
-            src={`https://res.cloudinary.com/dhohkn6wl/image/upload/c_fill,w_300,h_400,g_auto/${sectionImages.vision}`}
+            src={`https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_600/${sectionImages.vision}`}
             alt="Our Vision"
           />
         </div>
@@ -307,7 +307,7 @@ function App() {
       <section id="plan-section" className="plan-section" ref={planRef}>
         <div className="section-image">
           <img
-            src={`https://res.cloudinary.com/dhohkn6wl/image/upload/c_fill,w_300,h_400,g_auto/${sectionImages.plan}`}
+            src={`https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_600/${sectionImages.plan}`}
             alt="How We Win"
           />
         </div>
