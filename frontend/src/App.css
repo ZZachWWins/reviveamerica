@@ -149,7 +149,7 @@ body {
   color: #ffd700; /* Gold text */
 }
 
-/* Sections */
+/* Sections with Glassmorphism */
 .landing-section,
 .why-i-am-section,
 .vision-section,
@@ -158,10 +158,14 @@ body {
 .donor-pitch {
   padding: 60px 20px;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 20px auto; /* Space between sections */
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: rgba(10, 10, 35, 0.9); /* Glassy background */
+  backdrop-filter: blur(5px); /* Frosted glass effect */
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
 }
 
 .section-image {
@@ -215,6 +219,7 @@ body {
 
 .full-text {
   padding: 10px;
+  background: rgba(255, 255, 255, 0.05); /* Slightly lighter glass effect */
   backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 5px;
@@ -247,6 +252,8 @@ body {
   text-align: center;
   max-width: 400px;
   width: 90%;
+  backdrop-filter: blur(5px); /* Glass effect for modal */
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .auth-tabs {
@@ -343,6 +350,8 @@ body {
   width: 90%;
   max-height: 80vh;
   overflow-y: auto;
+  backdrop-filter: blur(5px); /* Glass effect for modal */
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Footer */
@@ -447,6 +456,8 @@ body {
   .testimonials,
   .donor-pitch {
     padding: 30px 10px;
+    margin: 10px auto; /* Reduced margin for mobile */
+    border-radius: 8px; /* Slightly smaller radius */
   }
 
   .landing-title,
@@ -478,6 +489,7 @@ body {
   .history-content {
     padding: 20px;
     max-width: 90%;
+    border-radius: 8px;
   }
 
   .auth-tabs {
@@ -568,6 +580,8 @@ body {
   .testimonials,
   .donor-pitch {
     padding: 40px 15px;
+    margin: 15px auto; /* Slightly less margin than desktop */
+    border-radius: 9px;
   }
 
   .landing-title,
@@ -598,6 +612,7 @@ body {
   .history-content {
     padding: 30px;
     max-width: 500px;
+    border-radius: 9px;
   }
 
   .auth-tabs {
@@ -637,7 +652,7 @@ body {
   }
 }
 
-/* Desktop (above 1024px) - Base styles apply, but explicit for clarity */
+/* Desktop (above 1024px) */
 @media (min-width: 1025px) {
   .app {
     padding: 20px;
@@ -686,6 +701,8 @@ body {
   .testimonials,
   .donor-pitch {
     padding: 60px 20px;
+    margin: 20px auto;
+    border-radius: 10px;
   }
 
   .landing-title,
@@ -715,11 +732,13 @@ body {
   .auth-content {
     padding: 40px;
     max-width: 400px;
+    border-radius: 10px;
   }
 
   .history-content {
     padding: 40px;
     max-width: 600px;
+    border-radius: 10px;
   }
 
   .auth-tabs {
