@@ -176,7 +176,7 @@ body {
   background: rgba(10, 10, 35, 0.2); /* Lighter glassmorphism */
   backdrop-filter: blur(5px); /* Frosted glass effect */
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+  border: 2px solid #ff0000; /* Red border added */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
 }
 
@@ -492,6 +492,7 @@ body {
     padding: 30px 10px;
     margin: 10px auto; /* Reduced margin for mobile */
     border-radius: 8px; /* Slightly smaller radius */
+    border: 2px solid #ff0000; /* Red border for mobile */
   }
 
   .landing-title,
@@ -616,6 +617,7 @@ body {
     padding: 40px 15px;
     margin: 15px auto; /* Slightly less margin than desktop */
     border-radius: 9px;
+    border: 2px solid #ff0000; /* Red border for tablet */
   }
 
   .landing-title,
@@ -737,6 +739,7 @@ body {
     padding: 60px 20px;
     margin: 20px auto;
     border-radius: 10px;
+    border: 2px solid #ff0000; /* Red border for desktop */
   }
 
   .landing-title,
