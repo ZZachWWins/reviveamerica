@@ -241,7 +241,7 @@ function App() {
       <section id="why-i-am-section" className="why-i-am-section" ref={whyRef}>
         <div className="section-image">
           <img
-            src={`https://res.cloudinary.com/dhohkn6wl/image/upload/c_fill,w_300,h_400,g_auto/${sectionImages.why}`}
+            src={`https://res.cloudinary.com/dhohkn6wl/image/upload/v1743096730/ko4uornegfvgecy16nzy.jpg/c_fill,w_300,h_400,g_auto/${sectionImages.why}`}
             alt="Why We Fight"
           />
         </div>
