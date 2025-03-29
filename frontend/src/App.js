@@ -171,7 +171,7 @@ function App() {
 
   const sectionImages = {
     landing: 'your-landing-image-id',
-    why: 'ko4uornegfvgecy16nzy',
+    why: 'flre65fsephps2ylu6ed',
     vision: 'ggouo80ldyqfveik39g5',
     plan: 'your-plan-image-id',
   };
