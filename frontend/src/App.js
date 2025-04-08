@@ -222,7 +222,7 @@ function App() {
     landing: 'zigrdlmx6xmytcjwakmv',
     why: 'flre65fsephps2ylu6ed',
     vision: 'ggouo80ldyqfveik39g5',
-    plan: 'your-plan-image-id', // Replace with a valid Cloudinary ID
+    plan: 'And_we_call_them_putiju', // Replace with a valid Cloudinary ID
   };
 
   return (
