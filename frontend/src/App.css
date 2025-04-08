@@ -19,6 +19,17 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+/* Scroll Progress */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(to right, #ffd700, #ff4500);
+  z-index: 1000;
+  transition: width 0.2s ease;
+}
+
 /* Starry Background */
 .full-starry-background {
   position: fixed;
@@ -28,10 +39,8 @@ body {
   height: 100%;
   z-index: -2;
   background: linear-gradient(to bottom, #0a0a23, #1a1a4d);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2)); /* Cosmos glow */
 }
-
-/* Remove side starry background since we consolidated to one canvas */
-/* .starry-background { ... } is no longer needed */
 
 /* Rotating Text Background */
 .rotating-text-background {
@@ -42,9 +51,15 @@ body {
   font-size: 10rem;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.03); /* Toned down opacity */
+  color: rgba(255, 255, 255, 0.03);
   z-index: -3;
   white-space: nowrap;
+  animation: rotate 60s linear infinite; /* Added animation */
+}
+
+@keyframes rotate {
+  from { transform: translate(-50%, -50%) rotate(-45deg); }
+  to { transform: translate(-50%, -50%) rotate(315deg); } /* Full rotation from -45deg */
 }
 
 /* Header */
@@ -97,7 +112,7 @@ body {
   color: #ffd700;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  text-shadow: 0 0 3px rgba(255, 215, 0, 0.3); /* Reduced glow for readability */
+  text-shadow: 0 0 3px rgba(255, 215, 0, 0.3);
 }
 
 .full-text ul {
@@ -135,13 +150,18 @@ body {
 
 /* Navigation */
 .section-nav {
-  position: fixed;
-  top: 50%;
+  position: sticky; /* Changed to sticky for scroll behavior */
+  top: 20px;
   left: 10px;
-  transform: translateY(-50%);
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Changed to horizontal */
+  justify-content: center;
   gap: 10px;
+  background: rgba(0, 0, 0, 0.7); /* Added background */
+  padding: 10px;
+  border-radius: 20px;
+  transition: opacity 0.3s ease;
+  z-index: 10;
 }
 
 .section-nav a {
@@ -154,7 +174,7 @@ body {
 }
 
 .section-nav a:hover {
-  background: rgba(255, 255, 255, 1);
+  background: #ffd700; /* Gold hover instead of white */
 }
 
 .section-nav a:hover::after {
@@ -182,7 +202,10 @@ body {
 }
 
 .hero-slogan span {
+  font-size: 2.5rem; /* Larger for impact */
+  font-weight: bold;
   color: #ffd700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8); /* Stronger glow */
 }
 
 /* Sections with Glassmorphism */
@@ -198,7 +221,7 @@ body {
   background: rgba(10, 10, 35, 0.2);
   backdrop-filter: blur(5px);
   border-radius: 10px;
-  border: 2px solid #ff0000; /* Red border */
+  border: 2px solid #ff0000;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -214,7 +237,7 @@ body {
   background: rgba(10, 10, 35, 0.2);
   backdrop-filter: blur(5px);
   border-radius: 10px;
-  border: 2px solid #ffffff; /* White border for variety */
+  border: 2px solid #ffffff;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -226,6 +249,12 @@ body {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
+  transition: transform 0.3s ease, filter 0.3s ease; /* Added hover effects */
+}
+
+.section-image img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2) drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
 }
 
 .section-content {
@@ -249,7 +278,7 @@ body {
 
 .cta-btn:hover {
   background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Red glow on hover */
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
 }
 
 .cta-btn:disabled {
@@ -474,7 +503,7 @@ body {
 }
 
 .social-icon:hover {
-  color: #ff0000; /* Red on hover */
+  color: #ff0000;
 }
 
 /* Back to Top */
@@ -529,8 +558,8 @@ body {
   .auth-section span,
   .auth-form input::placeholder,
   .history-text {
-    color: #ffea00; /* Brighter gold for mobile readability */
-    text-shadow: none; /* Remove glow on mobile */
+    color: #ffea00;
+    text-shadow: none;
   }
 
   .auth-btn {
@@ -539,8 +568,13 @@ body {
   }
 
   .section-nav {
+    position: fixed; /* Revert to fixed for mobile */
+    top: 50%;
     left: 5px;
-    gap: 8px;
+    transform: translateY(-50%);
+    flex-direction: column; /* Vertical for mobile */
+    background: none; /* Remove background on mobile */
+    padding: 0;
   }
 
   .section-nav a {
@@ -549,12 +583,16 @@ body {
   }
 
   .section-nav a:hover::after {
-    display: none; /* Hide tooltips on mobile */
+    display: none;
   }
 
   .hero-slogan {
     font-size: 1.2rem;
     margin: 10px 0;
+  }
+
+  .hero-slogan span {
+    font-size: 1.8rem; /* Adjusted for mobile */
   }
 
   .landing-section,
@@ -679,6 +717,10 @@ body {
   .hero-slogan {
     font-size: 1.3rem;
     margin: 15px 0;
+  }
+
+  .hero-slogan span {
+    font-size: 2rem; /* Adjusted for tablet */
   }
 
   .landing-section,

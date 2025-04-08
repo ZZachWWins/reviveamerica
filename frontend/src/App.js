@@ -99,7 +99,7 @@ function App() {
     };
     animationFrameId = requestAnimationFrame(animate);
 
-
+    // Title Animation
     const title = titleRef.current;
     if (title) {
       const letters = "Revive America"
@@ -110,6 +110,7 @@ function App() {
       gsap.from('.letter', { duration: 1, opacity: 0, y: 50, stagger: 0.05, ease: 'power2.out' });
     }
 
+    // Section Animations
     const why = whyRef.current;
     if (why) {
       gsap.from(why.children, { duration: 1, opacity: 0, y: 30, stagger: 0.2, ease: 'power3.out', scrollTrigger: { trigger: why } });
@@ -125,6 +126,36 @@ function App() {
       gsap.from(plan.children, { duration: 1, opacity: 0, scale: 0.9, stagger: 0.1, ease: 'back.out(1.7)', scrollTrigger: { trigger: plan } });
     }
 
+    // Full Text Animation
+    gsap.from('.full-text', {
+      duration: 0.5,
+      opacity: 0,
+      y: 20,
+      ease: 'power2.out',
+      stagger: 0.1,
+      scrollTrigger: { trigger: '.full-text' },
+    });
+
+    // Slogan Typewriter
+    let i = 0;
+    const type = () => {
+      if (i < fullSlogan.length) {
+        setSloganText(fullSlogan.slice(0, i + 1));
+        i++;
+        setTimeout(type, 100);
+      }
+    };
+    type();
+
+    // Scroll Progress
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (window.scrollY / totalHeight) * 100;
+      setScrollProgress(progress);
+    };
+    window.addEventListener('scroll', handleScroll);
+
+    // Fetch Testimonials
     axios.get('/.netlify/functions/getTestimonials')
       .then((res) => {
         const data = Array.isArray(res.data) ? res.data : [];
@@ -140,9 +171,10 @@ function App() {
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('scroll', handleScroll);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [showCallText, showWhyText, showVisionText, showPlanText, showDonorText]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -195,11 +227,12 @@ function App() {
 
   return (
     <div className="app">
+      <div className="scroll-progress" style={{ width: `${scrollProgress}%` }}></div>
       <canvas ref={canvasRef} className="full-starry-background" />
       <div className="rotating-text-background">Revive America</div>
 
       <div className="hero-slogan">
-        <span>“Liberty Starts Here.”</span>
+        <span>{sloganText}</span>
       </div>
 
       <header className="header">
@@ -226,7 +259,7 @@ function App() {
       </header>
 
       <main>
-        <LazyLoad height={200} offset={100}>
+        <LazyLoad height={300} offset={200}>
           <section id="landing-section" className="landing-section">
             <div className="section-image">
               <img
@@ -272,7 +305,7 @@ function App() {
           </section>
         </LazyLoad>
 
-        <LazyLoad height={200} offset={100}>
+        <LazyLoad height={300} offset={200}>
           <section id="why-i-am-section" className="why-i-am-section" ref={whyRef}>
             <div className="section-image">
               <img
@@ -321,7 +354,7 @@ function App() {
           </section>
         </LazyLoad>
 
-        <LazyLoad height={200} offset={100}>
+        <LazyLoad height={300} offset={200}>
           <section id="vision-section" className="vision-section" ref={visionRef}>
             <div className="section-image">
               <img
@@ -395,7 +428,7 @@ function App() {
           </section>
         </LazyLoad>
 
-        <LazyLoad height={200} offset={100}>
+        <LazyLoad height={300} offset={200}>
           <section id="plan-section" className="plan-section" ref={planRef}>
             <div className="section-image">
               <img
@@ -487,7 +520,7 @@ function App() {
           </section>
         </LazyLoad>
 
-        <LazyLoad height={200} offset={100}>
+        <LazyLoad height={300} offset={200}>
           <section id="testimonials" className="testimonials">
             <h2 className="section-title">Voices of Revival</h2>
             <div className="testimonial-text">
@@ -502,7 +535,7 @@ function App() {
           </section>
         </LazyLoad>
 
-        <LazyLoad height={200} offset={100}>
+        <LazyLoad height={300} offset={200}>
           <section id="donor-pitch" className="donor-pitch">
             <div className="section-content">
               <h2 className="section-title">Your Role in Revival</h2>
@@ -540,7 +573,7 @@ function App() {
                     <li><span className="stat">$1 Million:</span> Secures a state/tribal win.</li>
                   </ul>
                   <p>
-                    From <span className="stat">1832</span> to tribal gaming, states and tribes win with donors. Act at <a href="https://reviveamerica.info" target="_blank" rel="noopener noreferrer">reviveamerica.info</a>, join <span className="stat">March 2025</span> rallies, share <a href="https://x.com/hashtag/ReviveAmerica" target="_blank" rel="noopener noreferrer">#ReviveAmerica</a> on X (<span className="stat">80%+ engagement</span>).
+                    From <span className="stat">1832</span> to tribal gaming, states and tribes win with donors. Act at <a href="https://reviveamerica.org" target="_blank" rel="noopener noreferrer">reviveamerica.org</a>, join <span className="stat">March 2025</span> rallies, share <a href="https://x.com/hashtag/ReviveAmerica" target="_blank" rel="noopener noreferrer">#ReviveAmerica</a> on X (<span className="stat">80%+ engagement</span>).
                   </p>
                 </div>
               )}
@@ -570,7 +603,7 @@ function App() {
               </form>
             ) : (
               <form onSubmit={handleSignup} className="auth-form">
-                <input type="text" value={signupUsername} onChange={(e) => setUsername(e.target.value)} placeholder="Choose Username" required aria-label="Choose Username" />
+                <input type="text" value={signupUsername} onChange={(e) => setSignupUsername(e.target.value)} placeholder="Choose Username" required aria-label="Choose Username" />
                 <input type="password" value={signupPassword} onChange={(e) => setSignupPassword(e.target.value)} placeholder="Choose Password" required aria-label="Choose Password" />
                 <button type="submit" className="submit-btn">Signup</button>
               </form>
