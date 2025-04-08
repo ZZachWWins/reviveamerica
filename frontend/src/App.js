@@ -24,84 +24,81 @@ function App() {
   const [error, setError] = useState('');
   const [testimonials, setTestimonials] = useState([]);
   const [isDonating, setIsDonating] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [sloganText, setSloganText] = useState('');
   const canvasRef = useRef(null);
   const titleRef = useRef(null);
   const whyRef = useRef(null);
   const visionRef = useRef(null);
   const planRef = useRef(null);
 
+  const fullSlogan = '“Liberty Starts Here.”';
+
   useEffect(() => {
-  const canvas = canvasRef.current;
-  const ctx = canvas?.getContext('2d');
-  const resizeCanvas = () => {
-    if (canvas) {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-  };
-  resizeCanvas();
-  window.addEventListener('resize', resizeCanvas);
+    // Cosmos Animation
+    const canvas = canvasRef.current;
+    const ctx = canvas?.getContext('2d');
+    const resizeCanvas = () => {
+      if (canvas) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+    };
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
-  const isMobile = window.innerWidth <= 768;
-  const starCount = isMobile ? 150 : 300; // More stars for desktop
-  const stars = Array.from({ length: starCount }, () => ({
-    x: Math.random() * (canvas?.width || window.innerWidth),
-    y: Math.random() * (canvas?.height || window.innerHeight),
-    radius: Math.random() * 2 + 1,
-    alpha: Math.random() * 0.5 + 0.5,
-    speed: Math.random() * 0.05 + 0.02, // For subtle movement
-    depth: Math.random(), // For parallax
-  }));
+    const isMobile = window.innerWidth <= 768;
+    const starCount = isMobile ? 150 : 300;
+    const stars = Array.from({ length: starCount }, () => ({
+      x: Math.random() * (canvas?.width || window.innerWidth),
+      y: Math.random() * (canvas?.height || window.innerHeight),
+      radius: Math.random() * 2 + 1,
+      alpha: Math.random() * 0.5 + 0.5,
+      speed: Math.random() * 0.05 + 0.02,
+      depth: Math.random(),
+    }));
 
-  let animationFrameId;
-  let frameCount = 0;
+    let animationFrameId;
+    let frameCount = 0;
 
-  const animate = () => {
-    if (ctx) {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      stars.forEach((star, i) => {
-        // Parallax effect based on scroll
-        const scrollOffset = window.scrollY * star.depth * 0.1;
-        const yPos = star.y - scrollOffset;
+    const animate = () => {
+      if (ctx) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        stars.forEach((star, i) => {
+          const scrollOffset = window.scrollY * star.depth * 0.1;
+          const yPos = star.y - scrollOffset;
 
-        ctx.beginPath();
-        ctx.arc(star.x, yPos, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
-        ctx.fill();
+          ctx.beginPath();
+          ctx.arc(star.x, yPos, star.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+          ctx.fill();
 
-        // Connect nearby stars for constellations
-        stars.slice(i + 1).forEach((other) => {
-          const dist = Math.hypot(star.x - other.x, yPos - other.y);
-          if (dist < 50) {
-            ctx.beginPath();
-            ctx.moveTo(star.x, yPos);
-            ctx.lineTo(other.x, other.y - scrollOffset);
-            ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 * star.alpha})`;
-            ctx.stroke();
+          stars.slice(i + 1).forEach((other) => {
+            const dist = Math.hypot(star.x - other.x, yPos - other.y);
+            if (dist < 50) {
+              ctx.beginPath();
+              ctx.moveTo(star.x, yPos);
+              ctx.lineTo(other.x, other.y - scrollOffset);
+              ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 * star.alpha})`;
+              ctx.stroke();
+            }
+          });
+
+          if (frameCount % 10 === 0) {
+            star.alpha += Math.random() * 0.1 - 0.05;
+            star.alpha = Math.max(0.3, Math.min(1, star.alpha));
+            star.x += star.speed * (Math.random() - 0.5);
+            star.y += star.speed;
+            if (star.y > canvas.height) star.y = 0;
+            if (star.x < 0 || star.x > canvas.width) star.x = Math.random() * canvas.width;
           }
         });
-
-        // Twinkle and drift
-        if (frameCount % 10 === 0) {
-          star.alpha += Math.random() * 0.1 - 0.05;
-          star.alpha = Math.max(0.3, Math.min(1, star.alpha));
-          star.x += star.speed * (Math.random() - 0.5); // Slight horizontal drift
-          star.y += star.speed; // Slow fall
-          if (star.y > canvas.height) star.y = 0; // Reset at bottom
-          if (star.x < 0 || star.x > canvas.width) star.x = Math.random() * canvas.width;
-        }
-      });
-    }
-    frameCount++;
+      }
+      frameCount++;
+      animationFrameId = requestAnimationFrame(animate);
+    };
     animationFrameId = requestAnimationFrame(animate);
-  };
-  animationFrameId = requestAnimationFrame(animate);
 
-  return () => {
-    window.removeEventListener('resize', resizeCanvas);
-    if (animationFrameId) cancelAnimationFrame(animationFrameId);
-  };
-};
 
     const title = titleRef.current;
     if (title) {
