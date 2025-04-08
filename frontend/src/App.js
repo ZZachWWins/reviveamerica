@@ -521,7 +521,7 @@ return (
                   <li><span className="stat">$1 Million:</span> Secures a state/tribal win.</li>
                 </ul>
                 <p>
-                  From <span className="stat">1832</span> to tribal gaming, states and tribes win with donors. Act at <a href="https://reviveamerica.org" target="_blank" rel="noopener noreferrer">reviveamerica.org</a>, join <span className="stat">March 2025</span> rallies, share <a href="https://x.com/hashtag/ReviveAmerica" target="_blank" rel="noopener noreferrer">#ReviveAmerica</a> on X (<span className="stat">80%+ engagement</span>).
+                  From <span className="stat">1832</span> to tribal gaming, states and tribes win with donors. Act at <a href="https://reviveamerica.info" target="_blank" rel="noopener noreferrer">reviveamerica.info</a>, join <span className="stat">March 2025</span> rallies, share <a href="https://x.com/hashtag/ReviveAmerica" target="_blank" rel="noopener noreferrer">#ReviveAmerica</a> on X (<span className="stat">80%+ engagement</span>).
                 </p>
               </div>
             )}
