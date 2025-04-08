@@ -101,7 +101,7 @@ function App() {
     window.removeEventListener('resize', resizeCanvas);
     if (animationFrameId) cancelAnimationFrame(animationFrameId);
   };
-}, []);
+};
 
     const title = titleRef.current;
     if (title) {
