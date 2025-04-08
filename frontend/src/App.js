@@ -268,7 +268,7 @@ function App() {
               />
             </div>
             <div className="section-content">
-              <h2 className="landing-title">Part 1: The Call</h2>
+              <h2 className="landing-title">The Call to Action</h2>
               <button className="cta-btn pulse-btn" onClick={() => setShowCallText(!showCallText)}>
                 {showCallText ? 'Hide The Call' : 'Read The Call'}
               </button>
