@@ -6,8 +6,8 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif; /* Poppins globally */
-  background: #0a0a23; /* Dark blue base for starry effect */
+  font-family: 'Poppins', sans-serif;
+  background: #0a0a23;
   overflow-x: hidden;
 }
 
@@ -16,27 +16,22 @@ body {
   position: relative;
   min-height: 100vh;
   padding: 20px;
-  font-family: 'Poppins', sans-serif; /* Ensure app inherits Poppins */
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Starry Backgrounds */
+/* Starry Background */
 .full-starry-background {
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   z-index: -2;
-  background: linear-gradient(to bottom, #0a0a23, #1a1a4d); /* Blue gradient for starry sky */
+  background: linear-gradient(to bottom, #0a0a23, #1a1a4d);
 }
 
-.starry-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 50px;
-  height: 100%;
-  z-index: -1;
-  background: linear-gradient(to bottom, #0a0a23, #1a1a4d); /* Matching blue gradient */
-}
+/* Remove side starry background since we consolidated to one canvas */
+/* .starry-background { ... } is no longer needed */
 
 /* Rotating Text Background */
 .rotating-text-background {
@@ -45,9 +40,9 @@ body {
   left: 50%;
   transform: translate(-50%, -50%) rotate(-45deg);
   font-size: 10rem;
-  font-family: 'Poppins', sans-serif; /* Poppins for rotating text */
-  font-weight: 700; /* Bold for emphasis */
-  color: rgba(255, 255, 255, 0.05);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.03); /* Toned down opacity */
   z-index: -3;
   white-space: nowrap;
 }
@@ -56,7 +51,7 @@ body {
 .header {
   text-align: center;
   padding: 40px 0;
-  border-bottom: 2px solid #ff0000; /* Red border */
+  border-bottom: 2px solid #ff0000;
 }
 
 /* Titles */
@@ -65,10 +60,10 @@ body {
 .section-title,
 .auth-title,
 .history-title {
-  color: #ff0000; /* Red titles */
-  font-family: 'Poppins', sans-serif; /* Poppins for titles */
-  font-weight: 700; /* Bold titles */
-  font-size: 3.5rem; /* Default for h1 */
+  color: #ff0000;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 3.5rem;
   margin-bottom: 10px;
 }
 
@@ -76,7 +71,16 @@ body {
 .section-title,
 .auth-title,
 .history-title {
-  font-size: 2.5rem; /* Smaller for h2 */
+  font-size: 2.5rem;
+}
+
+.full-text h3,
+.full-text h4,
+.full-text h5 {
+  color: #ff0000;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  margin: 15px 0 10px;
 }
 
 /* Body Text */
@@ -90,10 +94,16 @@ body {
 .auth-section span,
 .auth-form input::placeholder,
 .history-text {
-  color: #ffd700; /* Gold body text */
-  font-family: 'Poppins', sans-serif; /* Poppins for body text */
-  font-weight: 400; /* Regular weight for body */
-  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); /* Subtle gold glow */
+  color: #ffd700;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  text-shadow: 0 0 3px rgba(255, 215, 0, 0.3); /* Reduced glow for readability */
+}
+
+.full-text ul {
+  list-style: disc;
+  margin-left: 20px;
+  color: #ffd700;
 }
 
 /* Specific Adjustments */
@@ -109,14 +119,14 @@ body {
 .auth-btn {
   padding: 10px 20px;
   font-size: 1rem;
-  font-family: 'Poppins', sans-serif; /* Poppins for buttons */
-  font-weight: 500; /* Medium weight for buttons */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
   background: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s;
-  color: #ffd700; /* Gold text */
+  color: #ffd700;
 }
 
 .auth-btn:hover {
@@ -140,10 +150,25 @@ body {
   background: rgba(255, 255, 255, 0.5);
   border-radius: 50%;
   transition: background 0.3s;
+  position: relative;
 }
 
 .section-nav a:hover {
   background: rgba(255, 255, 255, 1);
+}
+
+.section-nav a:hover::after {
+  content: attr(title);
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  color: #0a0a23;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  white-space: nowrap;
 }
 
 /* Hero Slogan */
@@ -151,33 +176,46 @@ body {
   text-align: center;
   margin: 20px 0;
   font-size: 1.5rem;
-  font-family: 'Poppins', sans-serif; /* Poppins for slogan */
-  font-weight: 400; /* Regular weight */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
   font-style: italic;
 }
 
 .hero-slogan span {
-  color: #ffd700; /* Gold text */
+  color: #ffd700;
 }
 
 /* Sections with Glassmorphism */
 .landing-section,
-.why-i-am-section,
 .vision-section,
-.plan-section,
-.testimonials,
 .donor-pitch {
   padding: 60px 20px;
   max-width: 1200px;
-  margin: 20px auto; /* Space between sections */
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(10, 10, 35, 0.2); /* Lighter glassmorphism */
-  backdrop-filter: blur(5px); /* Frosted glass effect */
+  background: rgba(10, 10, 35, 0.2);
+  backdrop-filter: blur(5px);
   border-radius: 10px;
-  border: 2px solid #ff0000; /* Red border added */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+  border: 2px solid #ff0000; /* Red border */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.why-i-am-section,
+.plan-section,
+.testimonials {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(10, 10, 35, 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  border: 2px solid #ffffff; /* White border for variety */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .section-image {
@@ -192,26 +230,31 @@ body {
 
 .section-content {
   text-align: center;
-  /* Removed background and backdrop-filter to avoid overlap with parent */
-  padding: 0; /* Reset padding since parent handles the glass effect */
+  padding: 0;
 }
 
 .cta-btn {
   padding: 12px 24px;
   font-size: 1.1rem;
-  font-family: 'Poppins', sans-serif; /* Poppins for buttons */
-  font-weight: 500; /* Medium weight */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
   background: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin: 10px;
-  transition: background 0.3s;
-  color: #ffd700; /* Gold text */
+  transition: background 0.3s, box-shadow 0.3s;
+  color: #ffd700;
 }
 
 .cta-btn:hover {
   background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Red glow on hover */
+}
+
+.cta-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .pulse-btn {
@@ -229,24 +272,30 @@ body {
 .full-text {
   margin-top: 20px;
   font-size: 1rem;
-  font-family: 'Poppins', sans-serif; /* Poppins for text */
-  font-weight: 400; /* Regular weight */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
   line-height: 1.6;
   max-width: 800px;
 }
 
 .full-text {
   padding: 10px;
-  background: rgba(255, 255, 255, 0.05); /* Slightly lighter glass effect */
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 5px;
 }
 
+/* Stats */
+.stat {
+  color: #ff0000;
+  font-weight: 600;
+}
+
 /* Testimonials */
 .testimonial-text {
-  font-family: 'Poppins', sans-serif; /* Poppins for testimonials */
-  font-weight: 400; /* Regular weight */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
   font-style: italic;
   opacity: 0.9;
 }
@@ -272,7 +321,7 @@ body {
   text-align: center;
   max-width: 400px;
   width: 90%;
-  backdrop-filter: blur(5px); /* Glass effect for modal */
+  backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -285,14 +334,14 @@ body {
 
 .tab-btn {
   padding: 10px 20px;
-  font-family: 'Poppins', sans-serif; /* Poppins for tabs */
-  font-weight: 500; /* Medium weight */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
   background: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s;
-  color: #ffd700; /* Gold text */
+  color: #ffd700;
 }
 
 .tab-btn.active {
@@ -312,30 +361,30 @@ body {
 .auth-form input {
   padding: 10px;
   font-size: 1rem;
-  font-family: 'Poppins', sans-serif; /* Poppins for inputs */
-  font-weight: 400; /* Regular weight */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
   background: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 5px;
-  color: #ffd700; /* Gold text */
+  color: #ffd700;
 }
 
 .auth-form input::placeholder {
-  font-family: 'Poppins', sans-serif; /* Poppins for placeholders */
+  font-family: 'Poppins', sans-serif;
   font-weight: 400;
 }
 
 .submit-btn {
   padding: 10px;
   font-size: 1rem;
-  font-family: 'Poppins', sans-serif; /* Poppins for submit */
-  font-weight: 500; /* Medium weight */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
   background: rgba(255, 255, 255, 0.2);
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s;
-  color: #ffd700; /* Gold text */
+  color: #ffd700;
 }
 
 .submit-btn:hover {
@@ -346,18 +395,25 @@ body {
   margin-top: 20px;
   padding: 10px 20px;
   font-size: 1rem;
-  font-family: 'Poppins', sans-serif; /* Poppins for close button */
-  font-weight: 500; /* Medium weight */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
   background: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s;
-  color: #ffd700; /* Gold text */
+  color: #ffd700;
 }
 
 .close-btn:hover {
   background: rgba(255, 255, 255, 0.2);
+}
+
+.error-message {
+  color: #ff0000;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
 }
 
 /* History Modal */
@@ -383,7 +439,7 @@ body {
   width: 90%;
   max-height: 80vh;
   overflow-y: auto;
-  backdrop-filter: blur(5px); /* Glass effect for modal */
+  backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -391,14 +447,14 @@ body {
 .footer {
   text-align: center;
   padding: 40px 20px;
-  border-top: 2px solid #ff0000; /* Red border */
+  border-top: 2px solid #ff0000;
 }
 
 .contact-text a {
   text-decoration: none;
-  color: #ffd700; /* Gold text */
-  font-family: 'Poppins', sans-serif; /* Poppins for links */
-  font-weight: 400; /* Regular weight */
+  color: #ffd700;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
 }
 
 .contact-text a:hover {
@@ -413,8 +469,12 @@ body {
   font-size: 1.5rem;
   margin: 0 10px;
   text-decoration: none;
-  color: #ffd700; /* Gold text */
-  font-family: 'Poppins', sans-serif; /* Poppins for icons (if applicable) */
+  color: #ffd700;
+  transition: color 0.3s;
+}
+
+.social-icon:hover {
+  color: #ff0000; /* Red on hover */
 }
 
 /* Back to Top */
@@ -425,14 +485,14 @@ body {
   width: 40px;
   height: 40px;
   font-size: 1.5rem;
-  font-family: 'Poppins', sans-serif; /* Poppins for back-to-top */
-  font-weight: 500; /* Medium weight */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
   background: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 50%;
   cursor: pointer;
   transition: background 0.3s;
-  color: #ffd700; /* Gold text */
+  color: #ffd700;
 }
 
 .back-to-top:hover {
@@ -448,7 +508,7 @@ body {
   }
 
   .rotating-text-background {
-    font-size: 5rem; /* Smaller for mobile */
+    font-size: 5rem;
   }
 
   .header {
@@ -459,8 +519,18 @@ body {
     font-size: 2rem;
   }
 
-  .subtitle {
-    font-size: 1rem;
+  .subtitle,
+  .landing-text,
+  .section-text,
+  .full-text,
+  .testimonial-text,
+  .footer-text,
+  .contact-text,
+  .auth-section span,
+  .auth-form input::placeholder,
+  .history-text {
+    color: #ffea00; /* Brighter gold for mobile readability */
+    text-shadow: none; /* Remove glow on mobile */
   }
 
   .auth-btn {
@@ -478,6 +548,10 @@ body {
     height: 8px;
   }
 
+  .section-nav a:hover::after {
+    display: none; /* Hide tooltips on mobile */
+  }
+
   .hero-slogan {
     font-size: 1.2rem;
     margin: 10px 0;
@@ -490,9 +564,8 @@ body {
   .testimonials,
   .donor-pitch {
     padding: 30px 10px;
-    margin: 10px auto; /* Reduced margin for mobile */
-    border-radius: 8px; /* Slightly smaller radius */
-    border: 2px solid #ff0000; /* Red border for mobile */
+    margin: 10px auto;
+    border-radius: 8px;
   }
 
   .landing-title,
@@ -573,7 +646,7 @@ body {
   }
 
   .rotating-text-background {
-    font-size: 7rem; /* Medium size for tablet */
+    font-size: 7rem;
   }
 
   .header {
@@ -615,9 +688,8 @@ body {
   .testimonials,
   .donor-pitch {
     padding: 40px 15px;
-    margin: 15px auto; /* Slightly less margin than desktop */
+    margin: 15px auto;
     border-radius: 9px;
-    border: 2px solid #ff0000; /* Red border for tablet */
   }
 
   .landing-title,
@@ -690,127 +762,5 @@ body {
 
 /* Desktop (above 1024px) */
 @media (min-width: 1025px) {
-  .app {
-    padding: 20px;
-  }
-
-  .rotating-text-background {
-    font-size: 10rem;
-  }
-
-  .header {
-    padding: 40px 0;
-  }
-
-  .title {
-    font-size: 3.5rem;
-  }
-
-  .subtitle {
-    font-size: 1.2rem;
-  }
-
-  .auth-btn {
-    padding: 10px 20px;
-    font-size: 1rem;
-  }
-
-  .section-nav {
-    left: 10px;
-    gap: 10px;
-  }
-
-  .section-nav a {
-    width: 10px;
-    height: 10px;
-  }
-
-  .hero-slogan {
-    font-size: 1.5rem;
-    margin: 20px 0;
-  }
-
-  .landing-section,
-  .why-i-am-section,
-  .vision-section,
-  .plan-section,
-  .testimonials,
-  .donor-pitch {
-    padding: 60px 20px;
-    margin: 20px auto;
-    border-radius: 10px;
-    border: 2px solid #ff0000; /* Red border for desktop */
-  }
-
-  .landing-title,
-  .section-title,
-  .auth-title,
-  .history-title {
-    font-size: 2.5rem;
-  }
-
-  .section-image img {
-    max-width: 100%;
-  }
-
-  .cta-btn {
-    padding: 12px 24px;
-    font-size: 1.1rem;
-    margin: 10px;
-  }
-
-  .landing-text,
-  .section-text,
-  .full-text {
-    font-size: 1rem;
-    max-width: 800px;
-  }
-
-  .auth-content {
-    padding: 40px;
-    max-width: 400px;
-    border-radius: 10px;
-  }
-
-  .history-content {
-    padding: 40px;
-    max-width: 600px;
-    border-radius: 10px;
-  }
-
-  .auth-tabs {
-    gap: 20px;
-  }
-
-  .tab-btn {
-    padding: 10px 20px;
-    font-size: 1rem;
-  }
-
-  .auth-form input,
-  .submit-btn,
-  .close-btn {
-    font-size: 1rem;
-    padding: 10px;
-  }
-
-  .footer {
-    padding: 40px 20px;
-  }
-
-  .footer-text,
-  .contact-text {
-    font-size: 0.9rem;
-  }
-
-  .social-icon {
-    font-size: 1.5rem;
-    margin: 0 10px;
-  }
-
-  .back-to-top {
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
-  }
+  /* No changes needed beyond base styles */
 }
