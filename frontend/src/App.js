@@ -26,6 +26,7 @@ function App() {
   const [isDonating, setIsDonating] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [sloganText, setSloganText] = useState('');
+  const [showNav, setShowNav] = useState(false); 
   const canvasRef = useRef(null);
   const titleRef = useRef(null);
   const whyRef = useRef(null);
