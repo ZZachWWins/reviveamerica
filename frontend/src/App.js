@@ -235,28 +235,36 @@ function App() {
         <span>{sloganText}</span>
       </div>
 
-      <header className="header">
-        <h1 ref={titleRef} className="title">Revive America</h1>
-        <p className="subtitle">A Sovereign People’s Journey</p>
-        <div className="auth-section">
-          {user ? (
-            <>
-              <span>Welcome, {user.username}</span>
-              <button onClick={handleLogout} className="auth-btn">Logout</button>
-            </>
-          ) : (
-            <button onClick={() => setShowAuth(true)} className="auth-btn">Sign Up or Log In</button>
-          )}
-        </div>
-        <nav className="section-nav">
-          <a href="#landing-section" title="The Call" aria-label="The Call"></a>
-          <a href="#why-i-am-section" title="Why We Fight" aria-label="Why We Fight"></a>
-          <a href="#vision-section" title="Our Vision" aria-label="Our Vision"></a>
-          <a href="#plan-section" title="How We Win" aria-label="How We Win"></a>
-          <a href="#testimonials" title="Voices" aria-label="Voices"></a>
-          <a href="#donor-pitch" title="Your Role" aria-label="Your Role"></a>
-        </nav>
-      </header>
+<header className="header">
+  <div className="header-container">
+    <h1 ref={titleRef} className="title">
+      <span className="title-main">Revive</span>
+      <span className="title-sub">America</span>
+    </h1>
+    <p className="subtitle">A Sovereign People’s Journey</p>
+    <div className="auth-section">
+      {user ? (
+        <>
+          <span>Welcome, {user.username}</span>
+          <button onClick={handleLogout} className="auth-btn">Logout</button>
+        </>
+      ) : (
+        <button onClick={() => setShowAuth(true)} className="auth-btn">Sign Up or Log In</button>
+      )}
+    </div>
+    <button className="nav-toggle" onClick={() => setShowNav(!showNav)} aria-label="Toggle Navigation">
+      ☰
+    </button>
+    <nav className={`section-nav ${showNav ? 'active' : ''}`}>
+      <a href="#landing-section" title="The Call" aria-label="The Call"></a>
+      <a href="#why-i-am-section" title="Why We Fight" aria-label="Why We Fight"></a>
+      <a href="#vision-section" title="Our Vision" aria-label="Our Vision"></a>
+      <a href="#plan-section" title="How We Win" aria-label="How We Win"></a>
+      <a href="#testimonials" title="Voices" aria-label="Voices"></a>
+      <a href="#donor-pitch" title="Your Role" aria-label="Your Role"></a>
+    </nav>
+  </div>
+</header>
 
       <main>
         <LazyLoad height={300} offset={200}>
