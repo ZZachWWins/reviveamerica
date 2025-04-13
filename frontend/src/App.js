@@ -1425,6 +1425,37 @@ function App() {
           </div>
         </div>
       )}
+
+      {showMission && (
+        <div className="mission-modal" role="dialog" aria-labelledby="mission-title">
+          <div className="mission-content">
+            <h2 id="mission-title" className="mission-title">
+              Our Mission
+            </h2>
+            <p>
+              Revive America is dedicated to restoring the sovereignty of states
+              and tribes, uniting communities to reclaim the American Dream of
+              liberty and self-governance by 2040. We stand for a nation where
+              individuals, guided by the principles of 1776 and tribal heritage,
+              break free from elite control to secure justice, prosperity, and
+              freedom for all.
+            </p>
+            <button
+              className="cta-btn"
+              onClick={() => setShowMission(false)}
+            >
+              Close
+            </button>
+            <button
+              className="close-btn"
+              onClick={() => setShowMission(false)}
+              aria-label="Close"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
