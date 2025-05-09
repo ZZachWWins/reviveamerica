@@ -13,7 +13,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [signupUsername, setSignupUsername] = useState('');
+  const [signupEmail, setSignupEmail] = useState('');
   const [signupPassword, setSignupPassword] = useState('');
   const [showAuth, setShowAuth] = useState(false);
   const [activeTab, setActiveTab] = useState('login');
@@ -268,15 +268,15 @@ function App() {
     e.preventDefault();
     try {
       await axios.post('/.netlify/functions/signup', {
-        username: signupUsername,
+        email: signupEmail,
         password: signupPassword,
       });
       setError('');
-      setSignupUsername('');
+      setSignupEmail('');
       setSignupPassword('');
       setActiveTab('login');
     } catch (err) {
-      setError('Signup failed—username might be taken!');
+      setError('Signup failed—email might be taken!');
     }
   };
 
@@ -1399,10 +1399,10 @@ function App() {
             ) : (
               <form onSubmit={handleSignup}>
                 <input
-                  type="text"
-                  placeholder="Username"
-                  value={signupUsername}
-                  onChange={(e) => setSignupUsername(e.target.value)}
+                  type="email"
+                  placeholder="Email"
+                  value={signupEmail}
+                  onChange={(e) => setSignupEmail(e.target.value)}
                   required
                 />
                 <input
