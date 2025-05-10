@@ -18,6 +18,7 @@ function App() {
   const [showAuth, setShowAuth] = useState(false);
   const [activeTab, setActiveTab] = useState('login');
   const [showMission, setShowMission] = useState(false);
+  const [showCryptoModal, setShowCryptoModal] = useState(false);
   const [showCallText, setShowCallText] = useState(false);
   const [showWhyText, setShowWhyText] = useState(false);
   const [showVisionText, setShowVisionText] = useState(false);
@@ -49,6 +50,24 @@ function App() {
     {
       src: 'https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_800,f_auto,q_auto/6717795bb5aceca85011ad83_osmo-parallax-layer-1_tfzsho',
       alt: 'Figure Looking at Mountains',
+    },
+  ];
+
+  const cryptoWallets = [
+    {
+      currency: 'Bitcoin (BTC)',
+      address: '186JhAavu1jejvYnhG1usMMhHKCREhxJ6M',
+      qrCode: 'https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_150,f_auto,q_auto/IMG_0410_gteykm',
+    },
+    {
+      currency: 'Ethereum (ETH)',
+      address: '0xbcc1c36A93676E51ef48a65Df358B0f08E1C3Fb8',
+      qrCode: 'https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_150,f_auto,q_auto/Screenshot_2025-05-09_at_8.43.57_PM_kte1fc',
+    },
+    {
+      currency: 'Solana (SOL)',
+      address: '5MBkD2sK8qvmJVyiCEzbXRVHaaN7L44bT9Z6Zc92HgA5',
+      qrCode: 'https://res.cloudinary.com/dhohkn6wl/image/upload/c_scale,w_150,f_auto,q_auto/IMG_0411_g8cmu4',
     },
   ];
 
@@ -413,6 +432,12 @@ function App() {
                 disabled={isDonating}
               >
                 {isDonating ? 'Opening...' : 'Support the Revival'}
+              </button>
+              <button
+                className="cta-btn crypto-btn"
+                onClick={() => setShowCryptoModal(true)}
+              >
+                Donate Crypto
               </button>
               <div className="landing-text">
                 <p>
@@ -1339,7 +1364,8 @@ function App() {
                     >
                       reviveamerica.info
                     </a>
-                    , join <span className="stat">March 2025</span> rallies,
+                    , join < BuenaVista, Colorado on the 1st and 3rd Tuesday of every month at 6:30 PM at the Community Center,{' '}
+                    <span className="stat">March 2025</span> rallies,
                     share{' '}
                     <a
                       href="https://x.com/hashtag/ReviveAmerica"
@@ -1449,6 +1475,33 @@ function App() {
             <button
               className="close-btn"
               onClick={() => setShowMission(false)}
+              aria-label="Close"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
+
+      {showCryptoModal && (
+        <div className="crypto-modal" role="dialog" aria-labelledby="crypto-title">
+          <div className="crypto-content">
+            <h2 id="crypto-title" className="crypto-title">
+              Donate Cryptocurrency
+            </h2>
+            <p>Support our cause by donating using one of the cryptocurrencies below:</p>
+            <div className="wallet-list">
+              {cryptoWallets.map((wallet, index) => (
+                <div key={index} className="wallet-item">
+                  <h3>{wallet.currency}</h3>
+                  <p className="wallet-address">{wallet.address}</p>
+                  <img src={wallet.qrCode} alt={`${wallet.currency} QR Code`} className="wallet-qr" />
+                </div>
+              ))}
+            </div>
+            <button
+              className="close-btn"
+              onClick={() => setShowCryptoModal(false)}
               aria-label="Close"
             >
               ×
