@@ -35,7 +35,7 @@ function App() {
   const visionRef = useRef(null);
   const planRef = useRef(null);
 
-  const fullSlogan = '“Liberty Starts Here.”';
+  const fullSlogan = '"Join our weekly meeting at 8pm EST/7pm Central at meetn.com/reviveamerica"';
 
   const parallaxImages = [
     {
