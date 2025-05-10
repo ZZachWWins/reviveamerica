@@ -1364,7 +1364,7 @@ function App() {
                     >
                       reviveamerica.info
                     </a>
-                    , join < BuenaVista, Colorado on the 1st and 3rd Tuesday of every month at 6:30 PM at the Community Center,{' '}
+                    , join us Wednesday's at 8pm EST at meetn.com/reviveamerica,{' '}
                     <span className="stat">March 2025</span> rallies,
                     share{' '}
                     <a
